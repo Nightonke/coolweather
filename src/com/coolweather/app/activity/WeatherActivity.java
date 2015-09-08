@@ -7,17 +7,21 @@ import com.coolweather.app.util.HttpUtil;
 import com.coolweather.app.util.Utility;
 
 import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class WeatherActivity extends Activity {
+public class WeatherActivity extends Activity implements OnClickListener {
 
 	private LinearLayout weatherInfoLayout;
 	private TextView cityNameTextView;
@@ -26,6 +30,9 @@ public class WeatherActivity extends Activity {
 	private TextView temp1TextView;
 	private TextView temp2TextView;
 	private TextView currentDateTextView;
+	
+	private Button switchCityButton;
+	private Button refreshWeatherButton;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +56,11 @@ public class WeatherActivity extends Activity {
 		} else {
 			showWeather();
 		}
+		
+		switchCityButton = (Button)findViewById(R.id.switch_city);
+		refreshWeatherButton = (Button)findViewById(R.id.refresh_weather);
+		switchCityButton.setOnClickListener(this);
+		refreshWeatherButton.setOnClickListener(this);
 		
 	}
 	
@@ -114,6 +126,30 @@ public class WeatherActivity extends Activity {
 		currentDateTextView.setText(preferences.getString("current_date", ""));
 		weatherInfoLayout.setVisibility(View.VISIBLE);
 		cityNameTextView.setVisibility(View.VISIBLE);
+	}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		switch (v.getId()) {
+		case R.id.switch_city:
+			Intent intent = new Intent(this, ChooseAreaActivity.class);
+			intent.putExtra("from_weather_activity", true);
+			startActivity(intent);
+			finish();
+			break;
+		case R.id.refresh_weather:
+			publishTextView.setText("Í¬²½ÖÐ...");
+			SharedPreferences preferences = 
+					PreferenceManager.getDefaultSharedPreferences(this);
+			String countyCodeString = preferences.getString("weather_code", "");
+			if (!TextUtils.isEmpty(countyCodeString)) {
+				queryWeather(countyCodeString);
+			}
+			break;
+		default:
+			break;
+		}
 	}
 	
 }
