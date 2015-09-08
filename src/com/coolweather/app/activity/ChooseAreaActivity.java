@@ -1,6 +1,7 @@
 package com.coolweather.app.activity;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -86,7 +87,12 @@ public class ChooseAreaActivity extends Activity {
 		adapter = new ArrayAdapter<String>(
 				this, android.R.layout.simple_list_item_1, dataList);
 		listView.setAdapter(adapter);
-		coolWeatherDB = CoolWeatherDB.getInstance(this);
+		try {
+			coolWeatherDB = CoolWeatherDB.getInstance(this);
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		
 		listView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override

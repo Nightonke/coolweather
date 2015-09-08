@@ -1,5 +1,6 @@
 package com.coolweather.app.model;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,13 +24,16 @@ public class CoolWeatherDB {
 	private SQLiteDatabase db;
 	
 	
-	private CoolWeatherDB(Context context) {
+	private CoolWeatherDB(Context context) throws IOException {
+		Log.d("database", "in CoolWeatherDB constructor");
 		CoolWeatherOpenHelper dbHelper = new CoolWeatherOpenHelper(
 				context, DB_NAME_STRING, null, VERSION);
-		db = dbHelper.getWritableDatabase();
+		dbHelper.createDatabase();
+		db = dbHelper.getReadableDatabase();
 	}
 	
-	public synchronized static CoolWeatherDB getInstance(Context context) {
+	public synchronized static CoolWeatherDB getInstance(Context context) 
+			throws IOException {
 		if (coolWeatherDB == null) {
 			coolWeatherDB = new CoolWeatherDB(context);
 		}
