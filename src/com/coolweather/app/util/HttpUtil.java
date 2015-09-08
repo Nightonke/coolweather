@@ -13,6 +13,8 @@ import android.util.Log;
 
 public class HttpUtil {
 
+	private static String API_KEY = "189a0f299820e4b19e267b9af5990ba3";
+	
 	public static void sendHttpRequest(final String address,
 			final HttpCallbackListener listener) {
 
@@ -28,6 +30,7 @@ public class HttpUtil {
 					connection = (HttpURLConnection)url.openConnection();
 					connection.setRequestMethod("GET");
 					connection.setConnectTimeout(8000);
+					connection.setRequestProperty("apikey", API_KEY);
 					connection.setReadTimeout(8000);
 					InputStream in = connection.getInputStream();
 					BufferedReader reader = 
@@ -35,6 +38,7 @@ public class HttpUtil {
 					StringBuilder response = new StringBuilder();
 					String lineString;
 					while ((lineString = reader.readLine()) != null) {
+						Log.d("weather", lineString);
 						response.append(lineString);
 					}
 					if (listener != null) {

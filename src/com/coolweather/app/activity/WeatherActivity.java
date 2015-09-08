@@ -67,26 +67,20 @@ public class WeatherActivity extends Activity implements OnClickListener {
 	
 	private void queryWeather(String countyCodeString) {
 		Log.d("weather", countyCodeString);
-		String address = "http://www.weather.com.cn/data/cityinfo/"
-					+ countyCodeString + ".html";
+		String address = "http://apis.baidu.com/heweather/weather/free?cityid=CN"
+					+ countyCodeString;
 		queryFromServer(address);
 	}
 	
 	private void queryFromServer(final String address) {
-		
-		Log.d("weather", "here");
-		
+
 		HttpUtil.sendHttpRequest(address, new HttpCallbackListener() {
 			
 			@Override
 			public void onFinish(final String response) {
 				// TODO Auto-generated method stub
-
-				Log.d("weather", "here");
 				
 				Utility.handleWeatherResponse(WeatherActivity.this, response);
-				
-				Log.d("weather", response);
 				
 				runOnUiThread(new Runnable() {
 					
@@ -118,18 +112,27 @@ public class WeatherActivity extends Activity implements OnClickListener {
 	private void showWeather() {
 		SharedPreferences preferences = 
 				PreferenceManager.getDefaultSharedPreferences(this);
-		cityNameTextView.setText(preferences.getString("city_name", ""));
-		temp1TextView.setText(preferences.getString("temp1", ""));
-		temp2TextView.setText(preferences.getString("temp2", ""));
-		weatherDespTextView.setText(preferences.getString("weather_desp", ""));
+		cityNameTextView.setText(preferences.getString("basic_city", ""));
+		temp1TextView.setText(preferences.getString("daily_forecast_tmp_min_0", "") + "°C");
+		temp2TextView.setText(preferences.getString("daily_forecast_tmp_max_0", "") + "°C");
+		String weather_desp = "";
+		if (preferences.getString("daily_forecast_cond_txt_d_0", "").equals(
+				preferences.getString("daily_forecast_cond_txt_n_0", ""))) {
+			weather_desp = preferences.getString("daily_forecast_cond_txt_d_0", "") 
+					+ " 转 "
+					+ preferences.getString("daily_forecast_cond_txt_n_0", "");
+		} else {
+			weather_desp = preferences.getString("daily_forecast_cond_txt_d_0", "");
+		}
+		weatherDespTextView.setText(weather_desp);
 		publishTextView.setText("今天" 
-				+ preferences.getString("publish_time", "") + "发布");
+				+ preferences.getString("basic_loc", "") + "发布");
 		currentDateTextView.setText(preferences.getString("current_date", ""));
 		weatherInfoLayout.setVisibility(View.VISIBLE);
 		cityNameTextView.setVisibility(View.VISIBLE);
 		
-		Intent intent = new Intent(this, AutoUpdateService.class);
-		startService(intent);
+		// Intent intent = new Intent(this, AutoUpdateService.class);
+		// startService(intent);
 	}
 
 	@Override
@@ -146,7 +149,7 @@ public class WeatherActivity extends Activity implements OnClickListener {
 			publishTextView.setText("同步中...");
 			SharedPreferences preferences = 
 					PreferenceManager.getDefaultSharedPreferences(this);
-			String countyCodeString = preferences.getString("weather_code", "");
+			String countyCodeString = preferences.getString("city_id", "");
 			if (!TextUtils.isEmpty(countyCodeString)) {
 				queryWeather(countyCodeString);
 			}

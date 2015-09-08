@@ -111,7 +111,9 @@ public class ChooseAreaActivity extends Activity {
 					Intent intent = new Intent(
 							ChooseAreaActivity.this, WeatherActivity.class);
 					intent.putExtra("county_code", countyCodeString);
+					
 					startActivity(intent);
+					
 					finish();
 				}
 			}
