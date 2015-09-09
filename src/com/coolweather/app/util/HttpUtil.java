@@ -13,7 +13,8 @@ import android.util.Log;
 
 public class HttpUtil {
 
-	private static String API_KEY = "189a0f299820e4b19e267b9af5990ba3";
+	// 189a0f299820e4b19e267b9af5990ba3
+	private static String API_KEY = "9a97ae4966744735adc0102f2366c55f";
 	
 	public static void sendHttpRequest(final String address,
 			final HttpCallbackListener listener) {
@@ -25,12 +26,12 @@ public class HttpUtil {
 				// TODO Auto-generated method stub
 				HttpURLConnection connection = null;
 				try {
-					URL url = new URL(address);
+					URL url = new URL(address + "&key=" + API_KEY);
 					Log.d("weather", address);
 					connection = (HttpURLConnection)url.openConnection();
 					connection.setRequestMethod("GET");
 					connection.setConnectTimeout(8000);
-					connection.setRequestProperty("apikey", API_KEY);
+//					connection.setRequestProperty("Apikey", API_KEY);
 					connection.setReadTimeout(8000);
 					InputStream in = connection.getInputStream();
 					BufferedReader reader = 

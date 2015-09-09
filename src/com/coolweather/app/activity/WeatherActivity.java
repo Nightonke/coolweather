@@ -265,7 +265,7 @@ public class WeatherActivity extends Activity implements OnClickListener {
 	
 	private void queryWeather(String countyCodeString) {
 		Log.d("weather", countyCodeString);
-		String address = "http://apis.baidu.com/heweather/weather/free?cityid=CN"
+		String address = "https://api.heweather.com/x3/weather?cityid=CN"
 					+ countyCodeString;
 		queryFromServer(address);
 	}
