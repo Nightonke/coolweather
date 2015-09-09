@@ -1,24 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#27A5E9"
+    android:orientation="vertical" >
     
-    <ImageView
-            android:id="@+id/image"
-            android:scaleType="center"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/radar"
-        />
-    
-   <LinearLayout
-        android:layout_width="match_parent"
-	    android:layout_height="match_parent"
-	    android:background="#27A5E9"
-	    android:orientation="vertical" >
-	
-	<RelativeLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#58B2DC"
@@ -51,48 +38,37 @@
             android:background="@drawable/refresh" />
 
     </RelativeLayout>
-    
-    <RelativeLayout
-        android:id="@+id/simple_infomation_layout"
+   
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="#27A5E9"
+        android:layout_height="wrap_content"
+        android:background="#58B2DC"
         >
-        
-        <TextView
-            android:id="@+id/public_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:textColor="#FFF"
-            android:textSize="10sp"
-            />
-        
+            
         <LinearLayout
             android:id="@+id/weather_info_layout"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:orientation="vertical"
             >
                 
             <TextView
                 android:id="@+id/weather_desp"
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
                 android:gravity="center"
                 android:textColor="#FFF"
-                android:textSize="40sp"
+                android:textSize="60sp"
                 />
             
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:orientation="horizontal"
                 >
@@ -127,29 +103,886 @@
                     />
             </LinearLayout>
         </LinearLayout>
-    </RelativeLayout>
-    
+        
+		<ScrollView
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent"
+		    android:scrollbars="none"
+		    android:background="#AF27A5E9"
+		    >
+	        
+		   <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:background="#0027A5E9"
+		        android:orientation="vertical" >
+		    
+		        <TextView
+		            android:id="@+id/public_text"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_gravity="center_horizontal"
+		            android:layout_marginLeft="10dp"
+	                android:layout_marginRight="10dp"
+		            android:layout_marginTop="10dp"
+		            android:textColor="#FFF"
+		            android:textSize="10sp" />
+		        
+		        <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
+		            />
+		        
+		        <TableLayout
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:layout_gravity="center_horizontal"
+		            >
+		        
+		            <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        >
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="33°C"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="33°C"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="33°C"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="33°C"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="33°C"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="33°C"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="33°C"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
 
-    
-    <RelativeLayout
-        android:id="@+id/more_infomation_layout"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        android:background="#0F0089A7"
-        >
-        
-        <TextView
-            android:id="@+id/asd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="hey"
-            />
-        
-    </RelativeLayout>
-	
-	</LinearLayout>
-    
-</FrameLayout>
-    
-   
+                    </TableRow>
+		            
+		            <TableRow
+		                android:layout_width="match_parent"
+		                android:layout_height="wrap_content"
+		                android:layout_gravity="center_horizontal"
+		                >
+		                
+		                <ImageView
+		                    android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/thermometer1"
+                            android:layout_weight="1"
+		                    />
+		                
+		                <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/thermometer1"
+                            android:layout_weight="1"
+                            />
+		                
+		                <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/thermometer1"
+                            android:layout_weight="1"
+                            />
+		                
+		                <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/thermometer1"
+                            android:layout_weight="1"
+                            />
+		                
+		                <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/thermometer1"
+                            android:layout_weight="1"
+                            />
+		                
+		                <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/thermometer1"
+                            android:layout_weight="1"
+                            />
+		                
+		                <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/thermometer1"
+                            android:layout_weight="1"
+                            />
+
+		            </TableRow>
+		            
+		            <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        >
+		                
+		                <TextView
+		                    android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="33°C"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+		                    />
+		                
+		                <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="33°C"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+		                
+		                <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="33°C"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+		                
+		                <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="33°C"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+		                
+		                <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="33°C"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+		                
+		                <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="33°C"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+		                
+		                <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="33°C"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+
+		            </TableRow>
+		            
+		            <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        >
+                        
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/p101"
+                            android:layout_weight="1"
+                            android:scaleX="0.4"
+                            android:scaleY="0.4"
+                            />
+                        
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/p201"
+                            android:layout_weight="1"
+                            android:scaleX="0.4"
+                            android:scaleY="0.4"
+                            />
+                        
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/p301"
+                            android:layout_weight="1"
+                            android:scaleX="0.4"
+                            android:scaleY="0.4"
+                            />
+                        
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/p101"
+                            android:layout_weight="1"
+                            android:scaleX="0.4"
+                            android:scaleY="0.4"
+                            />
+                        
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/p101"
+                            android:layout_weight="1"
+                            android:scaleX="0.4"
+                            android:scaleY="0.4"
+                            />
+                        
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/p304"
+                            android:layout_weight="1"
+                            android:scaleX="0.4"
+                            android:scaleY="0.4"
+                            />
+                        
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/p500"
+                            android:layout_weight="1"
+                            android:scaleX="0.4"
+                            android:scaleY="0.4"
+                            />
+
+                    </TableRow>
+                    
+		            <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        >
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="今天"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="明天"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="后天"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="3号"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="4号"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="5号"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="6号"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+
+                    </TableRow>
+		            
+		        </TableLayout>
+		        
+		        <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    />
+		        
+		        <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    >
+                
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        >
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="体感温度(°C)"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="湿度%"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="气压(百帕)"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                    </TableRow>
+                    
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        >
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="32"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="30sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="89"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="30sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="1010"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="30sp"
+                            />
+                        
+                    </TableRow>
+                    
+                    <TableRow>
+                        
+                        <TextView
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="30dp"
+	                    />
+                        
+                    </TableRow>
+                    
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        >
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="降雨量(毫米)"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="能见度(千米)"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="风力等级"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                    </TableRow>
+                    
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        >
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text=".4"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="30sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="10"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="30sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="4-5"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="30sp"
+                            />
+                        
+                    </TableRow>
+                    
+                    <TableRow>
+                        
+                        <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        />
+                        
+                    </TableRow>
+                    
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        >
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="风向(角度)"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="风向(方向)"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="风速(千米每小时)"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                    </TableRow>
+                    
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        >
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="100"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="30sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="东南风"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="20sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="26"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="30sp"
+                            />
+                        
+                    </TableRow>
+                    
+                </TableLayout>
+		    
+			    <ImageView
+			            android:id="@+id/image"
+			            android:scaleType="center"
+			            android:layout_width="match_parent"
+			            android:layout_height="match_parent"
+			            android:src="@drawable/radar"
+			        />
+			    
+			    <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    />
+			    
+			    <ImageView
+			            android:scaleType="center"
+			            android:layout_width="match_parent"
+			            android:layout_height="match_parent"
+			            android:src="@drawable/city"
+			        />
+			    
+			    <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    >
+                
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        >
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="空气质量等级"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                    </TableRow>
+                    
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        >
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="良"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="20sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                    </TableRow>
+                    
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        >
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="PM2.5"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="空气质量指数"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="PM10"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                    </TableRow>
+                    
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        >
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="1小时平均值(ug/m³)"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="1小时平均值(ug/m³)"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                    </TableRow>
+                    
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        >
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="30"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="30sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="81"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="30sp"
+                            />
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="45"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#FFF"
+                            android:textSize="30sp"
+                            />
+                        
+                    </TableRow>
+                    
+                </TableLayout>
+
+	        </LinearLayout>
+	    
+	    </ScrollView>
+	   
+    </FrameLayout>
+</LinearLayout>

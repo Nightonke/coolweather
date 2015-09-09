@@ -67,12 +67,6 @@ public class WeatherActivity extends Activity implements OnClickListener {
 		temp1TextView = (TextView)findViewById(R.id.temp1);
 		temp2TextView = (TextView)findViewById(R.id.temp2);
 		
-		moreInfomationLayout = (RelativeLayout)findViewById(
-				R.id.more_infomation_layout);
-		moreInfomationLayout.setVisibility(View.INVISIBLE);
-		
-		simpleInfomationLayout = (RelativeLayout)findViewById(
-				R.id.simple_infomation_layout);
 		
 		moreInfomationShown = false;
 		
@@ -212,8 +206,7 @@ public class WeatherActivity extends Activity implements OnClickListener {
 					+ preferences.getString("daily_forecast_cond_txt_n_0", "");
 		}
 		weatherDespTextView.setText(weather_desp);
-		publishTextView.setText("今天" 
-				+ preferences.getString("basic_loc", "") + "发布");
+		publishTextView.setText(preferences.getString("basic_loc", "") + " 发布");
 //		currentDateTextView.setText(preferences.getString("current_date", ""));
 		weatherInfoLayout.setVisibility(View.VISIBLE);
 		cityNameTextView.setVisibility(View.VISIBLE);
