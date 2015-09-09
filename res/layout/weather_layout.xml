@@ -17,7 +17,7 @@
             android:layout_height="40dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:background="@drawable/home" />
+            android:background="@drawable/change_city" />
         
         <TextView
             android:id="@+id/city_name"
@@ -63,7 +63,7 @@
                 android:layout_marginTop="30dp"
                 android:gravity="center"
                 android:textColor="#FFF"
-                android:textSize="60sp"
+                android:textSize="50sp"
                 />
             
             <LinearLayout
@@ -102,6 +102,22 @@
                     android:textSize="40sp"
                     />
             </LinearLayout>
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                />
+            
+            <ImageView
+                android:id="@+id/weather_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleX="2.0"
+                android:scaleY="2.0"
+                android:layout_gravity="center"
+                android:src="@drawable/p101"
+                />
+            
         </LinearLayout>
         
 		<ScrollView
@@ -111,7 +127,7 @@
 		    android:background="#AF27A5E9"
 		    >
 	        
-		   <LinearLayout
+		  <LinearLayout
 		        android:layout_width="match_parent"
 		        android:layout_height="wrap_content"
 		        android:background="#0027A5E9"
@@ -146,9 +162,9 @@
                         >
                         
                         <TextView
+                            android:id="@+id/day_1_max"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="33°C"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="#FFF"
@@ -156,9 +172,9 @@
                             />
                         
                         <TextView
+                            android:id="@+id/day_2_max"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="33°C"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="#FFF"
@@ -166,9 +182,9 @@
                             />
                         
                         <TextView
+                            android:id="@+id/day_3_max"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="33°C"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="#FFF"
@@ -176,9 +192,9 @@
                             />
                         
                         <TextView
+                            android:id="@+id/day_4_max"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="33°C"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="#FFF"
@@ -186,9 +202,9 @@
                             />
                         
                         <TextView
+                            android:id="@+id/day_5_max"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="33°C"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="#FFF"
@@ -196,9 +212,9 @@
                             />
                         
                         <TextView
+                            android:id="@+id/day_6_max"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="33°C"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="#FFF"
@@ -206,9 +222,9 @@
                             />
                         
                         <TextView
+                            android:id="@+id/day_7_max"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="33°C"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="#FFF"
@@ -281,9 +297,9 @@
                         >
 		                
 		                <TextView
+		                    android:id="@+id/day_1_min"
 		                    android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="33°C"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="#FFF"
@@ -291,9 +307,9 @@
 		                    />
 		                
 		                <TextView
+		                    android:id="@+id/day_2_min"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="33°C"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="#FFF"
@@ -301,9 +317,9 @@
                             />
 		                
 		                <TextView
+		                    android:id="@+id/day_3_min"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="33°C"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="#FFF"
@@ -311,9 +327,9 @@
                             />
 		                
 		                <TextView
+		                    android:id="@+id/day_4_min"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="33°C"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="#FFF"
@@ -321,9 +337,9 @@
                             />
 		                
 		                <TextView
+		                    android:id="@+id/day_5_min"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="33°C"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="#FFF"
@@ -331,9 +347,9 @@
                             />
 		                
 		                <TextView
+		                    android:id="@+id/day_6_min"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="33°C"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="#FFF"
@@ -341,9 +357,9 @@
                             />
 		                
 		                <TextView
+		                    android:id="@+id/day_7_min"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="33°C"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="#FFF"
@@ -359,63 +375,63 @@
                         >
                         
                         <ImageView
+                            android:id="@+id/day_1_weather_image"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:src="@drawable/p101"
                             android:layout_weight="1"
                             android:scaleX="0.4"
                             android:scaleY="0.4"
                             />
                         
                         <ImageView
+                            android:id="@+id/day_2_weather_image"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:src="@drawable/p201"
                             android:layout_weight="1"
                             android:scaleX="0.4"
                             android:scaleY="0.4"
                             />
                         
                         <ImageView
+                            android:id="@+id/day_3_weather_image"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:src="@drawable/p301"
                             android:layout_weight="1"
                             android:scaleX="0.4"
                             android:scaleY="0.4"
                             />
                         
                         <ImageView
+                            android:id="@+id/day_4_weather_image"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:src="@drawable/p101"
                             android:layout_weight="1"
                             android:scaleX="0.4"
                             android:scaleY="0.4"
                             />
                         
                         <ImageView
+                            android:id="@+id/day_5_weather_image"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:src="@drawable/p101"
                             android:layout_weight="1"
                             android:scaleX="0.4"
                             android:scaleY="0.4"
                             />
                         
                         <ImageView
+                            android:id="@+id/day_6_weather_image"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:src="@drawable/p304"
                             android:layout_weight="1"
                             android:scaleX="0.4"
                             android:scaleY="0.4"
                             />
                         
                         <ImageView
+                            android:id="@+id/day_7_weather_image"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:src="@drawable/p500"
                             android:layout_weight="1"
                             android:scaleX="0.4"
                             android:scaleY="0.4"
@@ -460,9 +476,9 @@
                             />
                         
                         <TextView
+                            android:id="@+id/day_4_date"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="3号"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="#FFF"
@@ -470,9 +486,9 @@
                             />
                         
                         <TextView
+                            android:id="@+id/day_5_date"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="4号"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="#FFF"
@@ -480,9 +496,9 @@
                             />
                         
                         <TextView
+                            android:id="@+id/day_6_date"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="5号"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="#FFF"
@@ -490,9 +506,9 @@
                             />
                         
                         <TextView
+                            android:id="@+id/day_7_date"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="6号"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="#FFF"
@@ -559,6 +575,7 @@
                         >
                         
                         <TextView
+                            android:id="@+id/fl"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="32"
@@ -569,6 +586,7 @@
                             />
                         
                         <TextView
+                            android:id="@+id/hum"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="89"
@@ -579,6 +597,7 @@
                             />
                         
                         <TextView
+                            android:id="@+id/pres"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="1010"
@@ -644,6 +663,7 @@
                         >
                         
                         <TextView
+                            android:id="@+id/pcpn"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text=".4"
@@ -654,6 +674,7 @@
                             />
                         
                         <TextView
+                            android:id="@+id/vis"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="10"
@@ -664,6 +685,7 @@
                             />
                         
                         <TextView
+                            android:id="@+id/sc"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="4-5"
@@ -678,9 +700,9 @@
                     <TableRow>
                         
                         <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        />
+	                        android:layout_width="wrap_content"
+	                        android:layout_height="30dp"
+	                        />
                         
                     </TableRow>
                     
@@ -729,6 +751,7 @@
                         >
                         
                         <TextView
+                            android:id="@+id/deg"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="100"
@@ -739,6 +762,7 @@
                             />
                         
                         <TextView
+                            android:id="@+id/dir"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="东南风"
@@ -749,6 +773,7 @@
                             />
                         
                         <TextView
+                            android:id="@+id/spd"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="26"
@@ -762,13 +787,6 @@
                     
                 </TableLayout>
 		    
-			    <ImageView
-			            android:id="@+id/image"
-			            android:scaleType="center"
-			            android:layout_width="match_parent"
-			            android:layout_height="match_parent"
-			            android:src="@drawable/radar"
-			        />
 			    
 			    <TextView
                     android:layout_width="wrap_content"
@@ -779,8 +797,13 @@
 			            android:scaleType="center"
 			            android:layout_width="match_parent"
 			            android:layout_height="match_parent"
-			            android:src="@drawable/city"
+			            android:src="@drawable/logo"
 			        />
+			    
+			    <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    />
 			    
 			    <TableLayout
                     android:layout_width="match_parent"
@@ -843,9 +866,9 @@
                             />
                         
                         <TextView
+                            android:id="@+id/qlty"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="良"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="#FFF"
@@ -883,7 +906,7 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="空气质量指数"
+                            android:text=""
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="#FFF"
@@ -921,7 +944,7 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text=""
+                            android:text="空气质量指数"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="#FFF"
@@ -947,9 +970,9 @@
                         >
                         
                         <TextView
+                            android:id="@+id/pm25"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="30"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="#FFF"
@@ -957,9 +980,9 @@
                             />
                         
                         <TextView
+                            android:id="@+id/aqi"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="81"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="#FFF"
@@ -967,9 +990,9 @@
                             />
                         
                         <TextView
+                            android:id="@+id/pm10"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="45"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:textColor="#FFF"
@@ -979,6 +1002,417 @@
                     </TableRow>
                     
                 </TableLayout>
+                
+			    <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    />
+			    
+			    <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    >
+                    
+			        <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        >
+                        
+			            <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="舒适指数"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+			            
+			            <TextView
+			                android:id="@+id/comf_brf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4"
+                            android:gravity="center_vertical|left"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+			        </TableRow>
+                
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        >
+                        
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:src="@drawable/comf"
+                            />
+                        
+                        <TextView
+                            android:id="@+id/comf_txt"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
+                            android:gravity="center_vertical|left"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            android:ellipsize="end"
+                            />
+
+                    </TableRow>
+                    
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        >
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="洗车指数"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                        <TextView
+                            android:id="@+id/cw_brf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4"
+                            android:gravity="center_vertical|left"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                    </TableRow>
+                
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        >
+                        
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:src="@drawable/cw"
+                            />
+                        
+                        <TextView
+                            android:id="@+id/cw_txt"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
+                            android:gravity="center_vertical|left"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            android:ellipsize="end"
+                            />
+
+                    </TableRow>
+                    
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        >
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="穿衣指数"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                        <TextView
+                            android:id="@+id/drsg_brf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4"
+                            android:gravity="center_vertical|left"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                    </TableRow>
+                
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        >
+                        
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:src="@drawable/drsg"
+                            />
+                        
+                        <TextView
+                            android:id="@+id/drsg_txt"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
+                            android:gravity="center_vertical|left"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            android:ellipsize="end"
+                            />
+
+                    </TableRow>
+                    
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        >
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="感冒指数"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                        <TextView
+                            android:id="@+id/flu_brf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4"
+                            android:gravity="center_vertical|left"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                    </TableRow>
+                
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        >
+                        
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:src="@drawable/flu"
+                            />
+                        
+                        <TextView
+                            android:id="@+id/flu_txt"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
+                            android:gravity="center_vertical|left"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            android:ellipsize="end"
+                            />
+
+                    </TableRow>
+                    
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        >
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="运动指数"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                        <TextView
+                            android:id="@+id/sport_brf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4"
+                            android:gravity="center_vertical|left"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                    </TableRow>
+                
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        >
+                        
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:src="@drawable/sport"
+                            />
+                        
+                        <TextView
+                            android:id="@+id/sport_txt"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
+                            android:gravity="center_vertical|left"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            android:ellipsize="end"
+                            />
+
+                    </TableRow>
+                    
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        >
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="旅游指数"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                        <TextView
+                            android:id="@+id/trav_brf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4"
+                            android:gravity="center_vertical|left"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                    </TableRow>
+                
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        >
+                        
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:src="@drawable/trav"
+                            />
+                        
+                        <TextView
+                            android:id="@+id/trav_txt"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
+                            android:gravity="center_vertical|left"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            android:ellipsize="end"
+                            />
+
+                    </TableRow>
+                    
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        >
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="紫外线指数"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                        <TextView
+                            android:id="@+id/uv_brf"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4"
+                            android:gravity="center_vertical|left"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            />
+                        
+                    </TableRow>
+                
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        >
+                        
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:src="@drawable/uv"
+                            />
+                        
+                        <TextView
+                            android:id="@+id/uv_txt"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
+                            android:gravity="center_vertical|left"
+                            android:textColor="#FFF"
+                            android:textSize="10sp"
+                            android:ellipsize="end"
+                            />
+
+                    </TableRow>
+                    
+                </TableLayout>
+			    
+			    <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    />
+			    
+			    <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="#FFF"
+                    android:text="github.com/Nightonke/coolweather"
+                    android:textSize="10sp" />
+			    <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="#FFF"
+                    android:text="Nightonke@outlook.com"
+                    android:textSize="10sp" />
 
 	        </LinearLayout>
 	    

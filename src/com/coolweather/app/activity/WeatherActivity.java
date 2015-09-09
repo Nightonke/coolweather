@@ -41,7 +41,65 @@ public class WeatherActivity extends Activity implements OnClickListener {
 	private TextView weatherDespTextView;
 	private TextView temp1TextView;
 	private TextView temp2TextView;
-//	private TextView currentDateTextView;
+	
+	private TextView day_1_maxTextView;
+	private TextView day_2_maxTextView;
+	private TextView day_3_maxTextView;
+	private TextView day_4_maxTextView;
+	private TextView day_5_maxTextView;
+	private TextView day_6_maxTextView;
+	private TextView day_7_maxTextView;
+	
+	private TextView day_1_minTextView;
+	private TextView day_2_minTextView;
+	private TextView day_3_minTextView;
+	private TextView day_4_minTextView;
+	private TextView day_5_minTextView;
+	private TextView day_6_minTextView;
+	private TextView day_7_minTextView;
+	
+	private ImageView imageView_1;
+	private ImageView imageView_2;
+	private ImageView imageView_3;
+	private ImageView imageView_4;
+	private ImageView imageView_5;
+	private ImageView imageView_6;
+	private ImageView imageView_7;
+	
+	private TextView day_4_dateTextView;
+	private TextView day_5_dateTextView;
+	private TextView day_6_dateTextView;
+	private TextView day_7_dateTextView;
+	
+	private TextView flTextView;
+	private TextView humTextView;
+	private TextView presTextView;
+	private TextView pcpnTextView;
+	private TextView visTextView;
+	private TextView scTextView;
+	private TextView degTextView;
+	private TextView dirTextView;
+	private TextView spdTextView;
+	
+	private TextView qltyTextView;
+	private TextView pm25TextView;
+	private TextView aqiTextView;
+	private TextView pm10TextView;
+	
+	private TextView comf_brfTextView;
+	private TextView comf_txtTextView;
+	private TextView cw_brfTextView;
+	private TextView cw_txtTextView;
+	private TextView drsg_brfTextView;
+	private TextView drsg_txtTextView;
+	private TextView flu_brfTextView;
+	private TextView flu_txtTextView;
+	private TextView sport_brfTextView;
+	private TextView sport_txtTextView;
+	private TextView trav_brfTextView;
+	private TextView trav_txtTextView;
+	private TextView uv_brfTextView;
+	private TextView uv_txtTextView;
 	
 	private RelativeLayout simpleInfomationLayout;
 	private RelativeLayout moreInfomationLayout;
@@ -70,14 +128,73 @@ public class WeatherActivity extends Activity implements OnClickListener {
 		
 		moreInfomationShown = false;
 		
-		imageView = (ImageView)findViewById(R.id.image);
+		imageView = (ImageView)findViewById(R.id.weather_image);
 		imageView.bringToFront();
 		AlphaAnimation alphaAnimation = new AlphaAnimation(0.5F, 0.5F);
 		alphaAnimation.setDuration(0);
 		alphaAnimation.setFillAfter(true);
 		imageView.startAnimation(alphaAnimation);
 		
-//		currentDateTextView = (TextView)findViewById(R.id.current_date);
+		day_1_maxTextView = (TextView)findViewById(R.id.day_1_max);
+		day_2_maxTextView = (TextView)findViewById(R.id.day_2_max);
+		day_3_maxTextView = (TextView)findViewById(R.id.day_3_max);
+		day_4_maxTextView = (TextView)findViewById(R.id.day_4_max);
+		day_5_maxTextView = (TextView)findViewById(R.id.day_5_max);
+		day_6_maxTextView = (TextView)findViewById(R.id.day_6_max);
+		day_7_maxTextView = (TextView)findViewById(R.id.day_7_max);
+		
+		day_1_minTextView = (TextView)findViewById(R.id.day_1_min);
+		day_2_minTextView = (TextView)findViewById(R.id.day_2_min);
+		day_3_minTextView = (TextView)findViewById(R.id.day_3_min);
+		day_4_minTextView = (TextView)findViewById(R.id.day_4_min);
+		day_5_minTextView = (TextView)findViewById(R.id.day_5_min);
+		day_6_minTextView = (TextView)findViewById(R.id.day_6_min);
+		day_7_minTextView = (TextView)findViewById(R.id.day_7_min);
+		
+		imageView_1 = (ImageView)findViewById(R.id.day_1_weather_image);
+		imageView_2 = (ImageView)findViewById(R.id.day_2_weather_image);
+		imageView_3 = (ImageView)findViewById(R.id.day_3_weather_image);
+		imageView_4 = (ImageView)findViewById(R.id.day_4_weather_image);
+		imageView_5 = (ImageView)findViewById(R.id.day_5_weather_image);
+		imageView_6 = (ImageView)findViewById(R.id.day_6_weather_image);
+		imageView_7 = (ImageView)findViewById(R.id.day_7_weather_image);
+		
+		day_4_dateTextView = (TextView)findViewById(R.id.day_4_date);
+		day_5_dateTextView = (TextView)findViewById(R.id.day_5_date);
+		day_6_dateTextView = (TextView)findViewById(R.id.day_6_date);
+		day_7_dateTextView = (TextView)findViewById(R.id.day_7_date);
+		
+		flTextView = (TextView)findViewById(R.id.fl);
+		humTextView = (TextView)findViewById(R.id.hum);
+		presTextView = (TextView)findViewById(R.id.pres);
+		pcpnTextView = (TextView)findViewById(R.id.pcpn);
+		visTextView = (TextView)findViewById(R.id.vis);
+		scTextView = (TextView)findViewById(R.id.sc);
+		degTextView = (TextView)findViewById(R.id.deg);
+		dirTextView = (TextView)findViewById(R.id.dir);
+		spdTextView = (TextView)findViewById(R.id.spd);
+		
+		qltyTextView = (TextView)findViewById(R.id.qlty);
+		pm25TextView = (TextView)findViewById(R.id.pm25);
+		aqiTextView = (TextView)findViewById(R.id.aqi);
+		pm10TextView = (TextView)findViewById(R.id.pm10);
+		
+		comf_brfTextView = (TextView)findViewById(R.id.comf_brf);
+		comf_txtTextView = (TextView)findViewById(R.id.comf_txt);
+		cw_brfTextView = (TextView)findViewById(R.id.cw_brf);
+		cw_txtTextView = (TextView)findViewById(R.id.cw_txt);
+		drsg_brfTextView = (TextView)findViewById(R.id.drsg_brf);
+		drsg_txtTextView = (TextView)findViewById(R.id.drsg_txt);
+		flu_brfTextView = (TextView)findViewById(R.id.flu_brf);
+		flu_txtTextView = (TextView)findViewById(R.id.flu_txt);
+		sport_brfTextView = (TextView)findViewById(R.id.sport_brf);
+		sport_txtTextView = (TextView)findViewById(R.id.sport_txt);
+		trav_brfTextView = (TextView)findViewById(R.id.trav_brf);
+		trav_txtTextView = (TextView)findViewById(R.id.trav_txt);
+		uv_brfTextView = (TextView)findViewById(R.id.uv_brf);
+		uv_txtTextView = (TextView)findViewById(R.id.uv_txt);
+		
+		
 		String countyCodeString = getIntent().getStringExtra("county_code");
 		if (!TextUtils.isEmpty(countyCodeString)) {
 			publishTextView.setText("Õ¨≤Ω÷–...");
@@ -211,105 +328,194 @@ public class WeatherActivity extends Activity implements OnClickListener {
 		weatherInfoLayout.setVisibility(View.VISIBLE);
 		cityNameTextView.setVisibility(View.VISIBLE);
 		
-		if ("100".equals(preferences.getString("now_cond_code", ""))) {
+		// 7 days max temp
+		day_1_maxTextView.setText(preferences.getString("daily_forecast_tmp_max_0", "") + "°„C");
+		day_2_maxTextView.setText(preferences.getString("daily_forecast_tmp_max_1", "") + "°„C");
+		day_3_maxTextView.setText(preferences.getString("daily_forecast_tmp_max_2", "") + "°„C");
+		day_4_maxTextView.setText(preferences.getString("daily_forecast_tmp_max_3", "") + "°„C");
+		day_5_maxTextView.setText(preferences.getString("daily_forecast_tmp_max_4", "") + "°„C");
+		day_6_maxTextView.setText(preferences.getString("daily_forecast_tmp_max_5", "") + "°„C");
+		day_7_maxTextView.setText(preferences.getString("daily_forecast_tmp_max_6", "") + "°„C");
+		
+		// 7 days min temp
+		day_1_minTextView.setText(preferences.getString("daily_forecast_tmp_min_0", "") + "°„C");
+		day_2_minTextView.setText(preferences.getString("daily_forecast_tmp_min_1", "") + "°„C");
+		day_3_minTextView.setText(preferences.getString("daily_forecast_tmp_min_2", "") + "°„C");
+		day_4_minTextView.setText(preferences.getString("daily_forecast_tmp_min_3", "") + "°„C");
+		day_5_minTextView.setText(preferences.getString("daily_forecast_tmp_min_4", "") + "°„C");
+		day_6_minTextView.setText(preferences.getString("daily_forecast_tmp_min_5", "") + "°„C");
+		day_7_minTextView.setText(preferences.getString("daily_forecast_tmp_min_6", "") + "°„C");
+		
+		setPicture(imageView, preferences.getString("now_cond_code", ""));
+		
+		// 7 days weather picture
+		setPicture(imageView_1, preferences.getString("now_cond_code", ""));
+		setPicture(imageView_2, preferences.getString("daily_forecast_cond_code_d_1", ""));
+		setPicture(imageView_3, preferences.getString("daily_forecast_cond_code_d_2", ""));
+		setPicture(imageView_4, preferences.getString("daily_forecast_cond_code_d_3", ""));
+		setPicture(imageView_5, preferences.getString("daily_forecast_cond_code_d_4", ""));
+		setPicture(imageView_6, preferences.getString("daily_forecast_cond_code_d_5", ""));
+		setPicture(imageView_7, preferences.getString("daily_forecast_cond_code_d_6", ""));
+		
+		// 4 days date
+		String day_4_dateString = preferences.getString("daily_forecast_date_3", "");
+		if (!"".equals(day_4_dateString)) {
+			day_4_dateString = day_4_dateString.substring(5, 10);
+		}
+		day_4_dateTextView.setText(day_4_dateString);
+		String day_5_dateString = preferences.getString("daily_forecast_date_4", "");
+		if (!"".equals(day_5_dateString)) {
+			day_5_dateString = day_5_dateString.substring(5, 10);
+		}
+		day_5_dateTextView.setText(day_5_dateString);
+		String day_6_dateString = preferences.getString("daily_forecast_date_5", "");
+		if (!"".equals(day_6_dateString)) {
+			day_6_dateString = day_6_dateString.substring(5, 10);
+		}
+		day_6_dateTextView.setText(day_6_dateString);
+		String day_7_dateString = preferences.getString("daily_forecast_date_6", "");
+		if (!"".equals(day_7_dateString)) {
+			day_7_dateString = day_7_dateString.substring(5, 10);
+		}
+		day_7_dateTextView.setText(day_7_dateString);
+		
+		// set 9 infomations
+		flTextView.setText(preferences.getString("now_fl", ""));
+		humTextView.setText(preferences.getString("now_hum", ""));
+		presTextView.setText(preferences.getString("now_pres", ""));
+		pcpnTextView.setText(preferences.getString("now_pcpn", ""));
+		visTextView.setText(preferences.getString("now_vis", ""));
+		scTextView.setText(preferences.getString("now_wind_sc", ""));
+		degTextView.setText(preferences.getString("now_wind_deg", ""));
+		dirTextView.setText(preferences.getString("now_wind_dir", ""));
+		spdTextView.setText(preferences.getString("now_wind_spd", ""));
+		
+		// set air quantity
+		qltyTextView.setText(preferences.getString("api_city_qlty", ""));
+		pm25TextView.setText(preferences.getString("api_city_pm25", ""));
+		aqiTextView.setText(preferences.getString("api_city_aqi", ""));
+		pm10TextView.setText(preferences.getString("api_city_pm10", ""));
+		
+		// set suggestion
+		comf_brfTextView.setText(preferences.getString("suggestion_comf_brf", ""));
+		comf_txtTextView.setText(preferences.getString("suggestion_comf_txt", ""));
+		cw_brfTextView.setText(preferences.getString("suggestion_cw_brf", ""));
+		cw_txtTextView.setText(preferences.getString("suggestion_cw_txt", ""));
+		drsg_brfTextView.setText(preferences.getString("suggestion_drsg_brf", ""));
+		drsg_txtTextView.setText(preferences.getString("suggestion_drsg_txt", ""));
+		flu_brfTextView.setText(preferences.getString("suggestion_flu_brf", ""));
+		flu_txtTextView.setText(preferences.getString("suggestion_flu_txt", ""));
+		sport_brfTextView.setText(preferences.getString("suggestion_sport_brf", ""));
+		sport_txtTextView.setText(preferences.getString("suggestion_sport_txt", ""));
+		trav_brfTextView.setText(preferences.getString("suggestion_trav_brf", ""));
+		trav_txtTextView.setText(preferences.getString("suggestion_trav_txt", ""));
+		uv_brfTextView.setText(preferences.getString("suggestion_uv_brf", ""));
+		uv_txtTextView.setText(preferences.getString("suggestion_uv_txt", ""));
+		
+		// Intent intent = new Intent(this, AutoUpdateService.class);
+		// startService(intent);
+	}
+
+	private void setPicture(ImageView imageView, String weather_code) {
+		if ("100".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p100);
-		} else if ("101".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("101".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p101);
-		} else if ("102".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("102".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p102);
-		} else if ("103".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("103".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p103);
-		} else if ("104".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("104".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p104);
-		} else if ("200".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("200".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p200);
-		} else if ("201".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("201".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p201);
-		} else if ("202".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("202".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p202);
-		} else if ("203".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("203".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p203);
-		} else if ("204".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("204".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p204);
-		} else if ("205".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("205".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p205);
-		} else if ("206".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("206".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p206);
-		} else if ("207".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("207".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p207);
-		} else if ("208".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("208".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p208);
-		} else if ("209".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("209".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p209);
-		} else if ("210".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("210".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p210);
-		} else if ("211".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("211".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p211);
-		} else if ("212".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("212".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p212);
-		} else if ("213".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("213".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p213);
-		} else if ("300".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("300".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p300);
-		} else if ("301".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("301".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p301);
-		} else if ("302".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("302".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p302);
-		} else if ("303".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("303".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p303);
-		} else if ("304".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("304".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p304);
-		} else if ("305".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("305".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p305);
-		} else if ("306".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("306".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p306);
-		} else if ("307".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("307".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p307);
-		} else if ("308".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("308".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p308);
-		} else if ("309".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("309".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p309);
-		} else if ("310".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("310".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p310);
-		} else if ("311".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("311".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p311);
-		} else if ("312".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("312".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p312);
-		} else if ("313".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("313".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p313);
-		} else if ("400".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("400".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p400);
-		} else if ("401".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("401".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p401);
-		} else if ("402".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("402".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p402);
-		} else if ("403".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("403".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p403);
-		} else if ("404".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("404".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p404);
-		} else if ("405".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("405".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p405);
-		} else if ("406".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("406".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p406);
-		} else if ("407".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("407".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p407);
-		} else if ("500".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("500".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p500);
-		} else if ("501".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("501".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p501);
-		} else if ("502".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("502".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p502);
-		} else if ("503".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("503".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p503);
-		} else if ("504".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("504".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p504);
-		} else if ("507".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("507".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p507);
-		} else if ("508".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("508".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p508);
-		} else if ("900".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("900".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p900);
-		} else if ("901".equals(preferences.getString("now_cond_code", ""))) {
+		} else if ("901".equals(weather_code)) {
 			imageView.setImageResource(R.drawable.p901);
 		} else {
 			AlphaAnimation alphaAnimation = new AlphaAnimation(0F, 0F);
@@ -317,12 +523,8 @@ public class WeatherActivity extends Activity implements OnClickListener {
 			alphaAnimation.setFillAfter(true);
 			imageView.startAnimation(alphaAnimation);
 		}
-		
-		
-		// Intent intent = new Intent(this, AutoUpdateService.class);
-		// startService(intent);
 	}
-
+	
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
