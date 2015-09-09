@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    >
     
-    <RelativeLayout
+    <ImageView
+            android:id="@+id/image"
+            android:scaleType="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/radar"
+        />
+    
+   <LinearLayout
+        android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:background="#27A5E9"
+	    android:orientation="vertical" >
+	
+	<RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#58B2DC"
@@ -21,10 +35,10 @@
         <TextView
             android:id="@+id/city_name"
             android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_centerInParent="true"
-	        android:textColor="#fff"
-	        android:textSize="24sp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="#fff"
+            android:textSize="24sp"
             />
 
         <Button
@@ -39,6 +53,7 @@
     </RelativeLayout>
     
     <RelativeLayout
+        android:id="@+id/simple_infomation_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -53,7 +68,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
             android:textColor="#FFF"
-            android:textSize="18sp"
+            android:textSize="10sp"
             />
         
         <LinearLayout
@@ -63,21 +78,13 @@
             android:layout_centerInParent="true"
             android:orientation="vertical"
             >
-            
-            <TextView
-                android:id="@+id/current_date"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:gravity="center"
-                android:textColor="#FFF"
-                android:textSize="18sp"
-                />
-            
+                
             <TextView
                 android:id="@+id/weather_desp"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
                 android:gravity="center"
                 android:textColor="#FFF"
                 android:textSize="40sp"
@@ -123,4 +130,26 @@
     </RelativeLayout>
     
 
-</LinearLayout>
+    
+    <RelativeLayout
+        android:id="@+id/more_infomation_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:background="#0F0089A7"
+        >
+        
+        <TextView
+            android:id="@+id/asd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hey"
+            />
+        
+    </RelativeLayout>
+	
+	</LinearLayout>
+    
+</FrameLayout>
+    
+   
