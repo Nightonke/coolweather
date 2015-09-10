@@ -35,7 +35,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
-            android:background="@drawable/refresh" />
+            android:background="@drawable/settings" />
 
     </RelativeLayout>
    
@@ -119,6 +119,12 @@
                 />
             
         </LinearLayout>
+        
+        <android.support.v4.widget.SwipeRefreshLayout
+		    android:id="@+id/swipe_container"
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent" 
+		    >
         
 		<ScrollView
 		    android:layout_width="match_parent"
@@ -1418,5 +1424,7 @@
 	    
 	    </ScrollView>
 	   
+		</android.support.v4.widget.SwipeRefreshLayout>
+		
     </FrameLayout>
 </LinearLayout>

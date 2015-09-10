@@ -679,6 +679,8 @@ public class Utility {
 			editor.putString("city_id", (basic_id.subSequence(2, 
 					basic_id.length() - 1)).toString());
 			
+			editor.putBoolean("city_selected", true);
+			
 			editor.commit();
 
 		} catch (JSONException e) {

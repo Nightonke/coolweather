@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.opengl.Visibility;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -33,7 +34,9 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
-public class WeatherActivity extends Activity implements OnClickListener {
+import android.support.v4.widget.SwipeRefreshLayout;
+
+public class WeatherActivity extends Activity implements OnClickListener, SwipeRefreshLayout.OnRefreshListener {
 
 	private LinearLayout weatherInfoLayout;
 	private TextView cityNameTextView;
@@ -103,6 +106,8 @@ public class WeatherActivity extends Activity implements OnClickListener {
 	
 	private RelativeLayout simpleInfomationLayout;
 	private RelativeLayout moreInfomationLayout;
+	
+	private SwipeRefreshLayout swipeRefreshLayout;
 	
 	private Button switchCityButton;
 	private Button refreshWeatherButton;
@@ -194,6 +199,13 @@ public class WeatherActivity extends Activity implements OnClickListener {
 		uv_brfTextView = (TextView)findViewById(R.id.uv_brf);
 		uv_txtTextView = (TextView)findViewById(R.id.uv_txt);
 		
+		swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
+		swipeRefreshLayout.setOnRefreshListener(this);
+		swipeRefreshLayout.setColorSchemeResources(
+				android.R.color.holo_blue_bright,
+				android.R.color.holo_blue_light,
+				android.R.color.holo_blue_bright,
+				android.R.color.holo_blue_dark);
 		
 		String countyCodeString = getIntent().getStringExtra("county_code");
 		if (!TextUtils.isEmpty(countyCodeString)) {
@@ -547,6 +559,26 @@ public class WeatherActivity extends Activity implements OnClickListener {
 		default:
 			break;
 		}
+	}
+
+	@Override
+	public void onRefresh() {
+		// TODO Auto-generated method stub
+		publishTextView.setText("Í¬²½ÖÐ...");
+		SharedPreferences preferences = 
+				PreferenceManager.getDefaultSharedPreferences(this);
+		String countyCodeString = preferences.getString("city_id", "");
+		if (!TextUtils.isEmpty(countyCodeString)) {
+			queryWeather(countyCodeString);
+		}
+		new Handler().postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				swipeRefreshLayout.setRefreshing(false);
+				Log.d("DEBUG", "yoyoyo");
+				
+			}
+		}, 5000);
 	}
 	
 }
