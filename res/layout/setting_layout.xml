@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#27A5E9"
+    android:orientation="vertical" >
+    
+    <RelativeLayout
+        android:id="@+id/setting_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#58B2DC"
+        >
+    
+        <Button
+            android:id="@+id/back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/back" />
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="#fff"
+            android:textSize="24sp"
+            android:text="设置"
+            />
+        
+    </RelativeLayout>
+    
+    <FrameLayout
+        android:id="@+id/setting_framelayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+            
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            >
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                />
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#FFF"
+                android:text="格"
+                android:textSize="15sp" 
+                />
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"
+                />
+            
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/red_style"
+                    />
+                
+                <TextView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    />
+                
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/yellow_style"
+                    />
+                
+                <TextView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    />
+                
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/blue_style"
+                    />
+                
+                <TextView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    />
+                
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/green_style"
+                    />
+                
+            </LinearLayout>
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"
+                />
+            
+            
+            <RadioGroup 
+                android:id="@+id/radio_group"
+		        android:layout_width="wrap_content"
+	            android:layout_height="50dp"
+	            android:orientation="horizontal" 
+	            android:layout_gravity="center_horizontal"
+		        >
+		        
+		        <RadioButton 
+		            android:id="@+id/radio_red"
+		            android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+		            android:button="@null"
+		            android:paddingLeft="50dp"
+                    android:gravity="center"
+                    android:background="@layout/radio_group_selector_red" 
+		            />
+		        
+		        <RadioButton
+		            android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:enabled="false"
+                    android:visibility="invisible"
+		            />
+		        
+		        <RadioButton 
+                    android:id="@+id/radio_yellow"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:button="@null"
+                    android:text=""
+                    android:gravity="center"
+                    android:paddingLeft="50dp"
+                    android:background="@layout/radio_group_selector_yellow" 
+                    />
+		        
+		        <RadioButton
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:enabled="false"
+                    android:visibility="invisible"
+                    />
+		        
+		        <RadioButton 
+                    android:id="@+id/radio_blue"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:button="@null"
+                    android:text=""
+                    android:gravity="center"
+                    android:paddingLeft="50dp"
+                    android:background="@layout/radio_group_selector_blue" 
+                    />
+		        
+		        <RadioButton
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:enabled="false"
+                    android:visibility="invisible"
+                    />
+		        
+		        <RadioButton 
+                    android:id="@+id/radio_green"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:button="@null"
+                    android:text=""
+                    android:gravity="center"
+                    android:paddingLeft="50dp"
+                    android:background="@layout/radio_group_selector_green" 
+                    />
+		        
+		        
+                
+		    </RadioGroup>
+		    
+            
+        </LinearLayout>
+        
+    </FrameLayout>
+
+</LinearLayout>

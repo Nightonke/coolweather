@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#27A5E9"
+    android:id="@+id/choose_background"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:orientation="vertical" >
     
     <RelativeLayout
+        android:id="@+id/choose_title"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#58B2DC"
         >
     
         <TextView
@@ -22,11 +22,20 @@
         
     </RelativeLayout>
     
-    <ListView
-        android:id="@+id/list_view"
+    <FrameLayout
+        android:id="@+id/choose_framelayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="wrap_content"
+        >
+
+	    <ListView
+	        android:id="@+id/list_view"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:background="@layout/list_item_selector"
+	        />
+	    
+	</FrameLayout>
     
 
 </LinearLayout>

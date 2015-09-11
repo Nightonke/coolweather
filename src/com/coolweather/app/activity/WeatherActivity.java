@@ -12,6 +12,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.opengl.Visibility;
 import android.os.Bundle;
 import android.os.Handler;
@@ -27,10 +28,12 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
@@ -115,7 +118,19 @@ public class WeatherActivity extends Activity implements OnClickListener, SwipeR
 	
 	private ImageView imageView;
 	
+	private RelativeLayout weatherTitleRelativeLayout;
+	private FrameLayout weatherFrameLayout;
+	private ScrollView weatherScrollView;
+	private ImageView centerLogoImageView;
+	
+	private String defaultWeatherTitleBackgroundColorString = "#58B2DC";
+	private String defaultWeatherBackgroundColorString = "#58B2DC";
+	private String defaultWeatherScrollviewBackgroundColorString = "#AF27A5E9";
+	private String defaultRefreshColorStyleString = "blue";
+	
 	private float x1 = 0, y1 = 0, x2 = 0, y2 = 0;
+	
+	private SharedPreferences preferences;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -129,7 +144,6 @@ public class WeatherActivity extends Activity implements OnClickListener, SwipeR
 		weatherDespTextView = (TextView)findViewById(R.id.weather_desp);
 		temp1TextView = (TextView)findViewById(R.id.temp1);
 		temp2TextView = (TextView)findViewById(R.id.temp2);
-		
 		
 		moreInfomationShown = false;
 		
@@ -201,11 +215,77 @@ public class WeatherActivity extends Activity implements OnClickListener, SwipeR
 		
 		swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
 		swipeRefreshLayout.setOnRefreshListener(this);
-		swipeRefreshLayout.setColorSchemeResources(
-				android.R.color.holo_blue_bright,
-				android.R.color.holo_blue_light,
-				android.R.color.holo_blue_bright,
-				android.R.color.holo_blue_dark);
+		
+		
+		preferences = 
+				PreferenceManager.getDefaultSharedPreferences(this);
+		
+		weatherTitleRelativeLayout = 
+				(RelativeLayout)findViewById(R.id.weather_title_background);
+		weatherFrameLayout = 
+				(FrameLayout)findViewById(R.id.weather_framelayout);
+		weatherScrollView = 
+				(ScrollView)findViewById(R.id.weather_scrollview);
+		centerLogoImageView = 
+				(ImageView)findViewById(R.id.center_logo);
+		
+		weatherTitleRelativeLayout.setBackgroundColor(Color.parseColor(
+				preferences.getString(
+						"weatherTitleBackgroundColor", 
+						defaultWeatherTitleBackgroundColorString)));
+		weatherFrameLayout.setBackgroundColor(Color.parseColor(
+				preferences.getString(
+						"weatherBackgroundColor", 
+						defaultWeatherScrollviewBackgroundColorString)));
+		weatherScrollView.setBackgroundColor(Color.parseColor(
+				preferences.getString(
+						"weatherScrollviewBackgroundColor", 
+						defaultWeatherScrollviewBackgroundColorString)));
+		
+		if ("red".equals(preferences.getString(
+				"refreshColorStyle", 
+				defaultRefreshColorStyleString))) {
+			swipeRefreshLayout.setColorSchemeResources(
+					android.R.color.holo_red_dark,
+					android.R.color.holo_red_light,
+					android.R.color.holo_red_dark,
+					android.R.color.holo_red_light);
+			centerLogoImageView.setImageResource(R.drawable.cloud_red);
+		} else if ("yellow".equals(preferences.getString(
+				"refreshColorStyle", 
+				defaultRefreshColorStyleString))) {
+			swipeRefreshLayout.setColorSchemeResources(
+					android.R.color.holo_orange_dark,
+					android.R.color.holo_orange_light,
+					android.R.color.holo_orange_dark,
+					android.R.color.holo_orange_light);
+			centerLogoImageView.setImageResource(R.drawable.cloud_yellow);
+		} else if ("blue".equals(preferences.getString(
+				"refreshColorStyle", 
+				defaultRefreshColorStyleString))) {
+			swipeRefreshLayout.setColorSchemeResources(
+					android.R.color.holo_blue_dark,
+					android.R.color.holo_blue_bright,
+					android.R.color.holo_blue_dark,
+					android.R.color.holo_blue_bright);
+			centerLogoImageView.setImageResource(R.drawable.cloud_blue);
+		} else if ("green".equals(preferences.getString(
+				"refreshColorStyle", 
+				defaultRefreshColorStyleString))) {
+			swipeRefreshLayout.setColorSchemeResources(
+					android.R.color.holo_green_dark,
+					android.R.color.holo_green_light,
+					android.R.color.holo_green_dark,
+					android.R.color.holo_green_light);
+			centerLogoImageView.setImageResource(R.drawable.cloud_green);
+		} else {
+			swipeRefreshLayout.setColorSchemeResources(
+					android.R.color.holo_blue_light,
+					android.R.color.holo_blue_bright,
+					android.R.color.holo_blue_light,
+					android.R.color.holo_blue_bright);
+			centerLogoImageView.setImageResource(R.drawable.cloud_blue);
+		}
 		
 		String countyCodeString = getIntent().getStringExtra("county_code");
 		if (!TextUtils.isEmpty(countyCodeString)) {
@@ -548,13 +628,9 @@ public class WeatherActivity extends Activity implements OnClickListener, SwipeR
 			finish();
 			break;
 		case R.id.refresh_weather:
-			publishTextView.setText("Í¬²½ÖÐ...");
-			SharedPreferences preferences = 
-					PreferenceManager.getDefaultSharedPreferences(this);
-			String countyCodeString = preferences.getString("city_id", "");
-			if (!TextUtils.isEmpty(countyCodeString)) {
-				queryWeather(countyCodeString);
-			}
+			Intent intent2 = new Intent(this, SettingActivity.class);
+			startActivity(intent2);
+			finish();
 			break;
 		default:
 			break;

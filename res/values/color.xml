@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="transparent">#000000</color>
+    <color name="color_bg_selected">#e0301e</color>
+    <color name="color_bg_normal">#e7e7e8</color>
+    <color name="color_text_selected">#ffffff</color>
+    <color name="color_text_normal">#000000</color>
+    
+    <color name="text_color">#ffffff</color>
+    
+    <color name="weather_title_red">#E16B8C</color>
+    <color name="weather_background_red">#F17C67</color>
+    <color name="weather_scrollview_red">#AF27A5E9</color>
+
+    
+    <color name="weather_title_blue">#58B2DC</color>
+    <color name="weather_background_blue">#58B2DC</color>
+    <color name="weather_scrollview_blue">#AF27A5E9</color>
+    
+    <drawable name="focused">#ff5500</drawable>
+    <drawable name="selected">#FF00FF</drawable>
+    
+</resources>
+

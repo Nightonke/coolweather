@@ -24,6 +24,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.util.LogWriter;
@@ -34,7 +35,11 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,9 +52,8 @@ public class ChooseAreaActivity extends Activity {
 	private ProgressDialog progressDialog;
 	private TextView titleTextView;
 	private ListView listView;
-	private ArrayAdapter<String> adapter;
 	private CoolWeatherDB coolWeatherDB;
-	private List<String> dataList = new ArrayList<String>();
+	private ArrayList<String> dataList = new ArrayList<String>();
 	
 	private List<Province> provinceList;
 	private List<City> cityList;
@@ -62,6 +66,17 @@ public class ChooseAreaActivity extends Activity {
 	private String idTableLocationString = "idTable.txt";
 	
 	private boolean isFromWeatherActivity;
+	
+	private NListViewAdatper nAdatper;
+	
+	private LinearLayout chooseBackgroundLinearLayout;
+	private RelativeLayout chooseTitleLinearLayout;
+	private FrameLayout chooseFrameLayout;
+	private TableLayout listItemTableLayout;
+	
+	private String defaultWeatherTitleBackgroundColorString = "#58B2DC";
+	private String defaultWeatherBackgroundColorString = "#58B2DC";
+	private String defaultWeatherScrollviewBackgroundColorString = "#AF27A5E9";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -82,11 +97,33 @@ public class ChooseAreaActivity extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.choose_area);
 		
+		chooseBackgroundLinearLayout = 
+				(LinearLayout)findViewById(R.id.choose_background);
+		chooseTitleLinearLayout = 
+				(RelativeLayout)findViewById(R.id.choose_title);
+		chooseFrameLayout = 
+				(FrameLayout)findViewById(R.id.choose_framelayout);
+		listItemTableLayout = 
+				(TableLayout)findViewById(R.id.list_item);
+		
+		chooseTitleLinearLayout.setBackgroundColor(Color.parseColor(
+				preferences.getString(
+						"weatherTitleBackgroundColor", 
+						defaultWeatherTitleBackgroundColorString)));
+		chooseBackgroundLinearLayout.setBackgroundColor(Color.parseColor(
+				preferences.getString(
+						"weatherBackgroundColor", 
+						defaultWeatherScrollviewBackgroundColorString)));
+//		listItemTableLayout.setBackgroundColor(Color.parseColor(
+//				preferences.getString(
+//						"weatherScrollviewBackgroundColor", 
+//						defaultWeatherScrollviewBackgroundColorString)));
+		
 		listView = (ListView)findViewById(R.id.list_view);
+		listView.setSelector(R.layout.list_item_selector);
 		titleTextView = (TextView)findViewById(R.id.title_text);
-		adapter = new ArrayAdapter<String>(
-				this, android.R.layout.simple_list_item_1, dataList);
-		listView.setAdapter(adapter);
+		nAdatper = new NListViewAdatper(dataList, this);
+		listView.setAdapter(nAdatper);
 		try {
 			coolWeatherDB = CoolWeatherDB.getInstance(this);
 		} catch(IOException e) {
@@ -129,7 +166,7 @@ public class ChooseAreaActivity extends Activity {
 			for (Province province : provinceList) {
 				dataList.add(province.getProvinceName());
 			}
-			adapter.notifyDataSetChanged();
+			nAdatper.notifyDataSetChanged();
 			listView.setSelection(0);
 			titleTextView.setText("ÖÐ¹ú");
 			currentLevel = LEVEL_PROVINCE;
@@ -146,7 +183,7 @@ public class ChooseAreaActivity extends Activity {
 			for (City city : cityList) {
 				dataList.add(city.getCityName());
 			}
-			adapter.notifyDataSetChanged();
+			nAdatper.notifyDataSetChanged();
 			listView.setSelection(0);
 			titleTextView.setText(selectedProvince.getProvinceName());
 			currentLevel = LEVEL_CITY;
@@ -163,7 +200,7 @@ public class ChooseAreaActivity extends Activity {
 			for (County county : countyList) {
 				dataList.add(county.getCountyName());
 			}
-			adapter.notifyDataSetChanged();
+			nAdatper.notifyDataSetChanged();
 			listView.setSelection(0);
 			titleTextView.setText(selectedCity.getCityName());
 			currentLevel = LEVEL_COUNTY;

@@ -2,13 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#27A5E9"
     android:orientation="vertical" >
     
     <RelativeLayout
+        android:id="@+id/weather_title_background"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#58B2DC"
+        android:background="@color/weather_title_blue"
         >
         
         <Button
@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:textColor="#fff"
+            android:textColor="@color/text_color"
             android:textSize="24sp"
             />
 
@@ -40,9 +40,10 @@
     </RelativeLayout>
    
     <FrameLayout
+        android:id="@+id/weather_framelayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#58B2DC"
+        android:background="@color/weather_background_blue"
         >
             
         <LinearLayout
@@ -115,7 +116,6 @@
                 android:scaleX="2.0"
                 android:scaleY="2.0"
                 android:layout_gravity="center"
-                android:src="@drawable/p101"
                 />
             
         </LinearLayout>
@@ -127,16 +127,16 @@
 		    >
         
 		<ScrollView
+		    android:id="@+id/weather_scrollview"
 		    android:layout_width="match_parent"
 		    android:layout_height="match_parent"
 		    android:scrollbars="none"
-		    android:background="#AF27A5E9"
+		    android:background="@color/weather_scrollview_blue"
 		    >
 	        
 		  <LinearLayout
 		        android:layout_width="match_parent"
 		        android:layout_height="wrap_content"
-		        android:background="#0027A5E9"
 		        android:orientation="vertical" >
 		    
 		        <TextView
@@ -800,10 +800,10 @@
                     />
 			    
 			    <ImageView
-			            android:scaleType="center"
-			            android:layout_width="match_parent"
-			            android:layout_height="match_parent"
-			            android:src="@drawable/logo"
+			        android:id="@+id/center_logo"
+		            android:scaleType="center"
+		            android:layout_width="match_parent"
+		            android:layout_height="match_parent"
 			        />
 			    
 			    <TextView
