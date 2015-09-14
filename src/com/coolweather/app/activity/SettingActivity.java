@@ -1,5 +1,7 @@
 package com.coolweather.app.activity;
 
+import net.simonvt.menudrawer.MenuDrawer;
+
 import com.coolweather.app.R;
 
 import android.app.Activity;
@@ -52,11 +54,17 @@ public class SettingActivity extends Activity implements OnClickListener {
 	private String defaultWeatherTitleBackgroundColorString = "#58B2DC";
 	private String defaultWeatherBackgroundColorString = "#58B2DC";
 	
+	private MenuDrawer menuDrawer;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.setting_layout);
+		
+		menuDrawer = MenuDrawer.attach(this);
+		menuDrawer.setContentView(R.layout.setting_layout);
+		menuDrawer.setMenuView(R.layout.menu_left);
 		
 		radioGroup = (RadioGroup)findViewById(R.id.radio_group);
 		
@@ -147,6 +155,7 @@ public class SettingActivity extends Activity implements OnClickListener {
 	    						defaultWeatherBackgroundColorString)));
 			}
 		});
+		
 	}
 	
 	@Override

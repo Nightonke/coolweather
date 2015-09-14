@@ -90,38 +90,43 @@ public class Utility {
 			JSONArray weatherInfoArray = jsonObject.getJSONArray("HeWeather data service 3.0");
 			JSONObject weatherInfo = weatherInfoArray.getJSONObject(0);
 			
-			// 城市名
-			JSONObject basic = weatherInfo.getJSONObject("basic");
-			String basic_city = basic.getString("city");
-			Log.d("JSON", "basic_city: " + basic_city);
-			editor.putString("basic_city", basic_city);
-			// 国家名
-			String basic_cnty = basic.getString("cnty");
-			Log.d("JSON", "basic_cnty: " + basic_cnty);
-			editor.putString("basic_cnty", basic_cnty);
-			// 城市ID
-			String basic_id = basic.getString("id");
-			Log.d("JSON", "basic_id: " + basic_id);
-			editor.putString("basic_id", basic_id);
-			// 纬度
-			String basic_lat = basic.getString("lat");
-			Log.d("JSON", "basic_lat: " + basic_lat);
-			editor.putString("basic_lat", basic_lat);
-			// 经度
-			String basic_lon = basic.getString("lon");
-			Log.d("JSON", "basic_lon: " + basic_lon);
-			editor.putString("basic_lon", basic_lon);
-			// 更新时间
-			JSONObject update = basic.getJSONObject("update");
-			// 更新的当地时间
-			String basic_loc = update.getString("loc");
-			Log.d("JSON", "basic_loc: " + basic_loc);
-			editor.putString("basic_loc", basic_loc);
-			// 更新的UTC时间
-			String basic_utc = update.getString("utc");
-			Log.d("JSON", "basic_utc: " + basic_utc);
-			editor.putString("basic_utc", basic_utc);
-			
+			if (!weatherInfo.isNull("basic")) {
+				// 城市名
+				JSONObject basic = weatherInfo.getJSONObject("basic");
+				String basic_city = basic.getString("city");
+				Log.d("JSON", "basic_city: " + basic_city);
+				editor.putString("basic_city", basic_city);
+				// 国家名
+				String basic_cnty = basic.getString("cnty");
+				Log.d("JSON", "basic_cnty: " + basic_cnty);
+				editor.putString("basic_cnty", basic_cnty);
+				// 城市ID
+				String basic_id = basic.getString("id");
+				Log.d("JSON", "basic_id: " + basic_id);
+				editor.putString("basic_id", basic_id);
+				// 纬度
+				String basic_lat = basic.getString("lat");
+				Log.d("JSON", "basic_lat: " + basic_lat);
+				editor.putString("basic_lat", basic_lat);
+				// 经度
+				String basic_lon = basic.getString("lon");
+				Log.d("JSON", "basic_lon: " + basic_lon);
+				editor.putString("basic_lon", basic_lon);
+				// 更新时间
+				JSONObject update = basic.getJSONObject("update");
+				// 更新的当地时间
+				String basic_loc = update.getString("loc");
+				Log.d("JSON", "basic_loc: " + basic_loc);
+				editor.putString("basic_loc", basic_loc);
+				// 更新的UTC时间
+				String basic_utc = update.getString("utc");
+				Log.d("JSON", "basic_utc: " + basic_utc);
+				editor.putString("basic_utc", basic_utc);
+				
+				editor.putString("city_id", (basic_id.subSequence(2, 
+						basic_id.length() - 1)).toString());
+			}
+
 			if (!weatherInfo.isNull("aqi")) {
 				JSONObject aqi = weatherInfo.getJSONObject("aqi");
 				JSONObject city = aqi.getJSONObject("city");
@@ -676,8 +681,6 @@ public class Utility {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy年M月d日",
 					Locale.CHINA);
 			editor.putString("current_date", sdf.format(new Date()));
-			editor.putString("city_id", (basic_id.subSequence(2, 
-					basic_id.length() - 1)).toString());
 			
 			editor.putBoolean("city_selected", true);
 			

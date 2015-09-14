@@ -1,6 +1,12 @@
 package com.coolweather.app.activity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import net.simonvt.menudrawer.MenuDrawer;
+
 import com.coolweather.app.R;
+import com.coolweather.app.activity.MenuAdapter.MenuListener;
 import com.coolweather.app.service.AutoUpdateService;
 import com.coolweather.app.util.HttpCallbackListener;
 import com.coolweather.app.util.HttpUtil;
@@ -9,6 +15,7 @@ import com.coolweather.app.util.Utility;
 
 import android.R.drawable;
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -27,19 +34,26 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import android.support.v4.widget.SwipeRefreshLayout;
 
-public class WeatherActivity extends Activity implements OnClickListener, SwipeRefreshLayout.OnRefreshListener {
+public class WeatherActivity extends Activity implements 
+	OnClickListener, 
+	SwipeRefreshLayout.OnRefreshListener, 
+	MenuAdapter.MenuListener {
 
 	private LinearLayout weatherInfoLayout;
 	private TextView cityNameTextView;
@@ -132,11 +146,55 @@ public class WeatherActivity extends Activity implements OnClickListener, SwipeR
 	
 	private SharedPreferences preferences;
 	
+	private MenuDrawer menuDrawer;
+	
+	protected MenuAdapter mAdapter;
+    protected ListView mList;
+
+    private int mActivePosition = 0;
+    
+    private String weatherTitleBackgroundColorRedString = "#E16B8C";
+	private String weatherBackgroundColorRedString = "#F17C67";
+	private String WeatherScrollviewBackgroundColorRedString = "#AFEEA9A9";
+	
+	private String weatherTitleBackgroundColorYellowString = "#E9CD4C";
+	private String weatherBackgroundColorYellowString = "#EFBB24";
+	private String WeatherScrollviewBackgroundColorYellowString = "#7FFBE251";
+	
+	private String weatherTitleBackgroundColorBlueString = "#58B2DC";
+	private String weatherBackgroundColorBlueString = "#58B2FF";
+	private String WeatherScrollviewBackgroundColorBlueString = "#AF27A5E9";
+	
+	private String weatherTitleBackgroundColorGreenString = "#A8D8B9";
+	private String weatherBackgroundColorGreenString = "#91B493";
+	private String WeatherScrollviewBackgroundColorGreenString = "#AF86A697";
+	
+	private Button changeCityButton;
+	
+	private Button redStyleButton;
+	private Button yellowStyleButton;
+	private Button blueStyleButton;
+	private Button greenStyleButton;
+	
+	private LinearLayout menuLeftLayout;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.weather_layout);
+		
+		menuDrawer = MenuDrawer.attach(this);
+		menuDrawer.setContentView(R.layout.weather_layout);
+
+        menuDrawer.setMenuView(R.layout.menu_left);
+        
+        menuDrawer.setTouchMode(MenuDrawer.TOUCH_MODE_FULLSCREEN);
+        menuDrawer.setSlideDrawable(R.drawable.ic_drawer);
+        menuDrawer.setDrawerIndicatorEnabled(true);
+		
+		initMenuDrawer();
+		
 		weatherInfoLayout = (LinearLayout)findViewById(
 				R.id.weather_info_layout);
 		cityNameTextView = (TextView)findViewById(R.id.city_name);
@@ -228,7 +286,38 @@ public class WeatherActivity extends Activity implements OnClickListener, SwipeR
 				(ScrollView)findViewById(R.id.weather_scrollview);
 		centerLogoImageView = 
 				(ImageView)findViewById(R.id.center_logo);
+		menuLeftLayout = (LinearLayout)findViewById(R.id.menu_left_linearlayout);
 		
+		makeColor();
+		
+		String countyCodeString = getIntent().getStringExtra("county_code");
+		if (!TextUtils.isEmpty(countyCodeString)) {
+			publishTextView.setText("同步中...");
+			weatherInfoLayout.setVisibility(View.INVISIBLE);
+			cityNameTextView.setVisibility(View.INVISIBLE);
+			queryWeather(countyCodeString);
+		} else {
+			showWeather();
+		}
+		
+		changeCityButton = (Button)findViewById(R.id.change_city);
+		changeCityButton.setOnClickListener(this);
+		redStyleButton = (Button)findViewById(R.id.red_style);
+		redStyleButton.setOnClickListener(this);
+		yellowStyleButton = (Button)findViewById(R.id.yellow_style);
+		yellowStyleButton.setOnClickListener(this);
+		blueStyleButton = (Button)findViewById(R.id.blue_style);
+		blueStyleButton.setOnClickListener(this);
+		greenStyleButton = (Button)findViewById(R.id.green_style);
+		greenStyleButton.setOnClickListener(this);
+
+	}
+	
+	private void initMenuDrawer() {
+		
+	}
+	
+	private void makeColor() {
 		weatherTitleRelativeLayout.setBackgroundColor(Color.parseColor(
 				preferences.getString(
 						"weatherTitleBackgroundColor", 
@@ -241,7 +330,10 @@ public class WeatherActivity extends Activity implements OnClickListener, SwipeR
 				preferences.getString(
 						"weatherScrollviewBackgroundColor", 
 						defaultWeatherScrollviewBackgroundColorString)));
-		
+		menuLeftLayout.setBackgroundColor(Color.parseColor(
+				preferences.getString(
+						"weatherTitleBackgroundColor", 
+						defaultWeatherTitleBackgroundColorString)));
 		if ("red".equals(preferences.getString(
 				"refreshColorStyle", 
 				defaultRefreshColorStyleString))) {
@@ -286,79 +378,13 @@ public class WeatherActivity extends Activity implements OnClickListener, SwipeR
 					android.R.color.holo_blue_bright);
 			centerLogoImageView.setImageResource(R.drawable.cloud_blue);
 		}
-		
-		String countyCodeString = getIntent().getStringExtra("county_code");
-		if (!TextUtils.isEmpty(countyCodeString)) {
-			publishTextView.setText("同步中...");
-			weatherInfoLayout.setVisibility(View.INVISIBLE);
-			cityNameTextView.setVisibility(View.INVISIBLE);
-			queryWeather(countyCodeString);
-		} else {
-			showWeather();
-		}
-		
-		switchCityButton = (Button)findViewById(R.id.switch_city);
-		refreshWeatherButton = (Button)findViewById(R.id.refresh_weather);
-		switchCityButton.setOnClickListener(this);
-		refreshWeatherButton.setOnClickListener(this);
-		
-	}
-	
-	@Override
-	public boolean onTouchEvent(MotionEvent event) {
-
-		if (event.getAction() == MotionEvent.ACTION_DOWN) {
-			x1 = event.getX();
-			y1 = event.getY();
-		}
-		if (event.getAction() == MotionEvent.ACTION_UP) {
-			
-			x2 = event.getX();
-			y2 = event.getY();
-			
-			if (y1 - y2 > 50) {
-				Log.d("direction", "up");
-				if (!moreInfomationShown) {
-					moreInfomationLayout.startAnimation(AnimationUtils.loadAnimation(this, R.anim.up_in));
-				}
-				moreInfomationShown = true;
-				moreInfomationLayout.setVisibility(View.VISIBLE);
-			} else if (y2 - y1 > 50) {
-				Log.d("direction", "down");
-				if (moreInfomationShown) {
-					Animation animation = AnimationUtils.loadAnimation(this, R.anim.down_out);
-					animation.setAnimationListener(new AnimationListener() {
-						
-						@Override
-						public void onAnimationStart(Animation animation) {
-							// TODO Auto-generated method stub
-							
-						}
-						
-						@Override
-						public void onAnimationRepeat(Animation animation) {
-							// TODO Auto-generated method stub
-							
-						}
-						
-						@Override
-						public void onAnimationEnd(Animation animation) {
-							// TODO Auto-generated method stub
-							moreInfomationLayout.setVisibility(View.INVISIBLE);
-						}
-					});
-					moreInfomationLayout.startAnimation(animation);
-				}
-				moreInfomationShown = false;
-			}
-		}
-		return super.onTouchEvent(event);
 	}
 	
 	private void queryWeather(String countyCodeString) {
 		Log.d("weather", countyCodeString);
 		String address = "https://api.heweather.com/x3/weather?cityid=CN"
 					+ countyCodeString;
+		
 		queryFromServer(address);
 	}
 	
@@ -400,6 +426,7 @@ public class WeatherActivity extends Activity implements OnClickListener, SwipeR
 	}
 	
 	private void showWeather() {
+		Log.d("DEBUG", "in show function");
 		SharedPreferences preferences = 
 				PreferenceManager.getDefaultSharedPreferences(this);
 		cityNameTextView.setText(preferences.getString("basic_city", ""));
@@ -620,21 +647,59 @@ public class WeatherActivity extends Activity implements OnClickListener, SwipeR
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
+		SharedPreferences.Editor editor = PreferenceManager
+				.getDefaultSharedPreferences((Context)this).edit();
 		switch (v.getId()) {
-		case R.id.switch_city:
+		case R.id.change_city:
 			Intent intent = new Intent(this, ChooseAreaActivity.class);
 			intent.putExtra("from_weather_activity", true);
 			startActivity(intent);
 			finish();
 			break;
-		case R.id.refresh_weather:
-			Intent intent2 = new Intent(this, SettingActivity.class);
-			startActivity(intent2);
-			finish();
+		case R.id.red_style:
+			editor.putString("weatherTitleBackgroundColor", 
+            		weatherTitleBackgroundColorRedString);
+            editor.putString("weatherBackgroundColor", 
+            		weatherBackgroundColorRedString);
+            editor.putString("weatherScrollviewBackgroundColor", 
+            		WeatherScrollviewBackgroundColorRedString);
+            editor.putString("refreshColorStyle", "red");
+            break;
+		case R.id.yellow_style:
+			Log.d("Menu", "yellow");
+			editor.putString("weatherTitleBackgroundColor", 
+            		weatherTitleBackgroundColorYellowString);
+            editor.putString("weatherBackgroundColor", 
+            		weatherBackgroundColorYellowString);
+            editor.putString("weatherScrollviewBackgroundColor", 
+            		WeatherScrollviewBackgroundColorYellowString);
+            editor.putString("refreshColorStyle", "yellow");
+			break;
+		case R.id.blue_style:
+			Log.d("Menu", "blue");
+			editor.putString("weatherTitleBackgroundColor", 
+            		weatherTitleBackgroundColorBlueString);
+            editor.putString("weatherBackgroundColor", 
+            		weatherBackgroundColorBlueString);
+            editor.putString("weatherScrollviewBackgroundColor", 
+            		WeatherScrollviewBackgroundColorBlueString);
+            editor.putString("refreshColorStyle", "blue");
+			break;
+		case R.id.green_style:
+			Log.d("Menu", "green");
+			editor.putString("weatherTitleBackgroundColor", 
+            		weatherTitleBackgroundColorGreenString);
+            editor.putString("weatherBackgroundColor", 
+            		weatherBackgroundColorGreenString);
+            editor.putString("weatherScrollviewBackgroundColor", 
+            		WeatherScrollviewBackgroundColorGreenString);
+            editor.putString("refreshColorStyle", "green");
 			break;
 		default:
 			break;
 		}
+		editor.commit();
+    	makeColor();
 	}
 
 	@Override
@@ -645,6 +710,7 @@ public class WeatherActivity extends Activity implements OnClickListener, SwipeR
 				PreferenceManager.getDefaultSharedPreferences(this);
 		String countyCodeString = preferences.getString("city_id", "");
 		if (!TextUtils.isEmpty(countyCodeString)) {
+			Log.d("DEBUG", "yoyoyo1");
 			queryWeather(countyCodeString);
 		}
 		new Handler().postDelayed(new Runnable() {
@@ -656,5 +722,22 @@ public class WeatherActivity extends Activity implements OnClickListener, SwipeR
 			}
 		}, 5000);
 	}
+
+	@Override
+	public void onActiveViewChanged(View v) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+    public void onBackPressed() {
+        final int drawerState = menuDrawer.getDrawerState();
+        if (drawerState == MenuDrawer.STATE_OPEN || drawerState == MenuDrawer.STATE_OPENING) {
+        	menuDrawer.closeMenu();
+            return;
+        }
+
+        super.onBackPressed();
+    }
 	
 }

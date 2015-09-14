@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/menu_left_linearlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        >
+    
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="30dp"
+	        />
+	    
+	    <ImageView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_horizontal"
+	        android:src="@drawable/new_logo"
+	        />
+	    
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="30dp"
+	        />
+	    
+	    <ImageView
+	        android:layout_width="wrap_content"
+	        android:layout_height="2dp"
+	        android:layout_gravity="left|center_vertical"
+	        android:scaleX="3.0"
+	        android:scaleY="0.5"
+	        android:src="@drawable/divider"
+	        />
+	    
+	    <FrameLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        >
+	        <ImageView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="30dp"
+	            android:layout_gravity="center_vertical"
+	            android:src="@drawable/change_city_small"
+	            />
+	        <Button
+		        android:id="@+id/change_city"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:background="@layout/button_selector"
+		        android:textColor="#FFFFFF"
+		        android:text="切换城市"
+		        />
+	    </FrameLayout>
+	    
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="50dp"
+	        />
+	    
+	    <FrameLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        >
+	        <ImageView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="30dp"
+	            android:layout_gravity="center_vertical"
+	            android:src="@drawable/cloud_red_small"
+	            />
+	        <Button
+	            android:id="@+id/red_style"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:background="@layout/button_selector"
+	            android:textColor="#FFFFFF"
+	            android:text="红梅"
+	            />
+	    </FrameLayout>
+	    
+	    <ImageView
+	        android:layout_width="wrap_content"
+	        android:layout_height="2dp"
+	        android:layout_gravity="left|center_vertical"
+	        android:scaleX="3.0"
+	        android:scaleY="0.5"
+	        android:src="@drawable/divider"
+	        />
+	    
+	    <FrameLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        >
+	        <ImageView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="30dp"
+	            android:layout_gravity="center_vertical"
+	            android:src="@drawable/cloud_yellow_small"
+	            />
+	        <Button
+	            android:id="@+id/yellow_style"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:background="@layout/button_selector"
+	            android:textColor="#FFFFFF"
+	            android:text="刈安"
+	            />
+	    </FrameLayout>
+	    
+	    <ImageView
+	        android:layout_width="wrap_content"
+	        android:layout_height="2dp"
+	        android:layout_gravity="left|center_vertical"
+	        android:scaleX="3.0"
+	        android:scaleY="0.5"
+	        android:src="@drawable/divider"
+	        />
+	    
+	    <FrameLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        >
+	        <ImageView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="30dp"
+	            android:layout_gravity="center_vertical"
+	            android:src="@drawable/cloud_blue_small"
+	            />
+	        <Button
+	            android:id="@+id/blue_style"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:background="@layout/button_selector"
+	            android:textColor="#FFFFFF"
+	            android:text="千草"
+	            />
+	    </FrameLayout>
+	    
+	    <ImageView
+	        android:layout_width="wrap_content"
+	        android:layout_height="2dp"
+	        android:layout_gravity="left|center_vertical"
+	        android:scaleX="3.0"
+	        android:scaleY="0.5"
+	        android:src="@drawable/divider"
+	        />
+	    
+	    <FrameLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        >
+	        <ImageView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="30dp"
+	            android:layout_gravity="center_vertical"
+	            android:src="@drawable/cloud_green_small"
+	            />
+	        <Button
+	            android:id="@+id/green_style"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:background="@layout/button_selector"
+	            android:textColor="#FFFFFF"
+	            android:text="箬竹"
+	            />
+	    </FrameLayout>
+    
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+    
+	   <TextView
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:layout_gravity="center_horizontal|bottom"
+	         android:gravity="bottom"
+	         android:textColor="#FFF"
+	         android:text="github.com/Nightonke/coolweather"
+	         android:textSize="10sp" />
+	     <TextView
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:layout_gravity="center_horizontal|bottom"
+	         android:textColor="#FFF"
+	         android:text="Nightonke@outlook.com"
+	         android:textSize="10sp" />
+
+    </LinearLayout>
+    
+   
+
+</LinearLayout>
