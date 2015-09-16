@@ -218,6 +218,8 @@ public class WeatherActivity extends Activity implements
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.weather_layout);
 		
+		
+		
 		menuDrawer = MenuDrawer.attach(this);
 		menuDrawer.setContentView(R.layout.weather_layout);
 
@@ -345,15 +347,17 @@ public class WeatherActivity extends Activity implements
 		greenStyleButton = (Button)findViewById(R.id.green_style);
 		greenStyleButton.setOnClickListener(this);
 		
-		lineChartView = (LineChartView)findViewById(R.id.temperature_chart);
-        
-        initTemperatureGraph();
-
+		
+		initTemperatureGraph();
 	}
 	
 	private void initTemperatureGraph() {
-
+		
+		lineChartView = (LineChartView)findViewById(R.id.temperature_chart);
+		
 		initTemperatureGraphData();
+		
+		Log.d("weather", "in init");
 		
         List<Line> lines = new ArrayList<Line>();
         for (int i = 0; i < numberOfLines; ++i) {
@@ -384,8 +388,29 @@ public class WeatherActivity extends Activity implements
         data = new LineChartData(lines);
 
         if (hasAxes) {
+        	
+        	day_4_dateString = preferences.getString("daily_forecast_date_3", "");
+    		if (!"".equals(day_4_dateString)) {
+    			day_4_dateString = day_4_dateString.substring(5, 10);
+    		}
+    		day_4_dateTextView.setText(day_4_dateString);
+    		day_5_dateString = preferences.getString("daily_forecast_date_4", "");
+    		if (!"".equals(day_5_dateString)) {
+    			day_5_dateString = day_5_dateString.substring(5, 10);
+    		}
+    		day_5_dateTextView.setText(day_5_dateString);
+    		day_6_dateString = preferences.getString("daily_forecast_date_5", "");
+    		if (!"".equals(day_6_dateString)) {
+    			day_6_dateString = day_6_dateString.substring(5, 10);
+    		}
+    		day_6_dateTextView.setText(day_6_dateString);
+    		day_7_dateString = preferences.getString("daily_forecast_date_6", "");
+    		if (!"".equals(day_7_dateString)) {
+    			day_7_dateString = day_7_dateString.substring(5, 10);
+    		}
+    		day_7_dateTextView.setText(day_7_dateString);
 
-            List axisLabelXList = new ArrayList<AxisValue>();
+            List<AxisValue> axisLabelXList = new ArrayList<AxisValue>();
             AxisValue axisValue1 = new AxisValue(0).setLabel("今天");
             AxisValue axisValue2 = new AxisValue(1).setLabel("明天");
             AxisValue axisValue3 = new AxisValue(2).setLabel("后天");
@@ -418,6 +443,9 @@ public class WeatherActivity extends Activity implements
             data.setAxisYLeft(null);
         }
 
+//        lineChartView.setZoomEnabled(false);
+//        lineChartView.setScrollEnabled(false);
+        
         data.setBaseValue(Float.NEGATIVE_INFINITY);
         lineChartView.setLineChartData(data);
 	}
@@ -425,6 +453,7 @@ public class WeatherActivity extends Activity implements
 	private void initTemperatureGraphData() {
 		randomNumbersTab[0][0] = Integer.parseInt(
 				preferences.getString("daily_forecast_tmp_max_0", "0"));
+		Log.d("weather", preferences.getString("daily_forecast_tmp_max_0", "0"));
         randomNumbersTab[0][1] = Integer.parseInt(
 				preferences.getString("daily_forecast_tmp_max_1", "0"));
         randomNumbersTab[0][2] = Integer.parseInt(
@@ -673,6 +702,7 @@ public class WeatherActivity extends Activity implements
 		
 		// Intent intent = new Intent(this, AutoUpdateService.class);
 		// startService(intent);
+		initTemperatureGraph();
 	}
 
 	private void setPicture(ImageView imageView, String weather_code) {
