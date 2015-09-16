@@ -138,224 +138,27 @@
                     android:layout_height="150dp"
 		            />
 		        
+		        <LinearLayout
+		            android:layout_width="match_parent"
+		            android:layout_height="300dp"
+		            android:orientation="vertical"
+		            >
+		        
+			        <lecho.lib.hellocharts.view.LineChartView
+	                    android:id="@+id/temperature_chart"
+	                    android:layout_width="match_parent"
+	                    android:layout_height="300dp"
+	                    android:paddingLeft="17dp"
+	                    android:paddingRight="17dp"
+	                    />
+		        
+		        </LinearLayout>
+		        
 		        <TableLayout
 		            android:layout_width="match_parent"
 		            android:layout_height="wrap_content"
 		            android:layout_gravity="center_horizontal"
 		            >
-		        
-		            <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        >
-                        
-                        <TextView
-                            android:id="@+id/day_1_max"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:textColor="#FFF"
-                            android:textSize="10sp"
-                            />
-                        
-                        <TextView
-                            android:id="@+id/day_2_max"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:textColor="#FFF"
-                            android:textSize="10sp"
-                            />
-                        
-                        <TextView
-                            android:id="@+id/day_3_max"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:textColor="#FFF"
-                            android:textSize="10sp"
-                            />
-                        
-                        <TextView
-                            android:id="@+id/day_4_max"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:textColor="#FFF"
-                            android:textSize="10sp"
-                            />
-                        
-                        <TextView
-                            android:id="@+id/day_5_max"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:textColor="#FFF"
-                            android:textSize="10sp"
-                            />
-                        
-                        <TextView
-                            android:id="@+id/day_6_max"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:textColor="#FFF"
-                            android:textSize="10sp"
-                            />
-                        
-                        <TextView
-                            android:id="@+id/day_7_max"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:textColor="#FFF"
-                            android:textSize="10sp"
-                            />
-
-                    </TableRow>
-		            
-		            <TableRow
-		                android:layout_width="match_parent"
-		                android:layout_height="wrap_content"
-		                android:layout_gravity="center_horizontal"
-		                >
-		                
-		                <ImageView
-		                    android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:src="@drawable/thermometer1"
-                            android:layout_weight="1"
-		                    />
-		                
-		                <ImageView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:src="@drawable/thermometer1"
-                            android:layout_weight="1"
-                            />
-		                
-		                <ImageView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:src="@drawable/thermometer1"
-                            android:layout_weight="1"
-                            />
-		                
-		                <ImageView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:src="@drawable/thermometer1"
-                            android:layout_weight="1"
-                            />
-		                
-		                <ImageView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:src="@drawable/thermometer1"
-                            android:layout_weight="1"
-                            />
-		                
-		                <ImageView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:src="@drawable/thermometer1"
-                            android:layout_weight="1"
-                            />
-		                
-		                <ImageView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:src="@drawable/thermometer1"
-                            android:layout_weight="1"
-                            />
-
-		            </TableRow>
-		            
-		            <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        >
-		                
-		                <TextView
-		                    android:id="@+id/day_1_min"
-		                    android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:textColor="#FFF"
-                            android:textSize="10sp"
-		                    />
-		                
-		                <TextView
-		                    android:id="@+id/day_2_min"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:textColor="#FFF"
-                            android:textSize="10sp"
-                            />
-		                
-		                <TextView
-		                    android:id="@+id/day_3_min"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:textColor="#FFF"
-                            android:textSize="10sp"
-                            />
-		                
-		                <TextView
-		                    android:id="@+id/day_4_min"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:textColor="#FFF"
-                            android:textSize="10sp"
-                            />
-		                
-		                <TextView
-		                    android:id="@+id/day_5_min"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:textColor="#FFF"
-                            android:textSize="10sp"
-                            />
-		                
-		                <TextView
-		                    android:id="@+id/day_6_min"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:textColor="#FFF"
-                            android:textSize="10sp"
-                            />
-		                
-		                <TextView
-		                    android:id="@+id/day_7_min"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:textColor="#FFF"
-                            android:textSize="10sp"
-                            />
-
-		            </TableRow>
 		            
 		            <TableRow
                         android:layout_width="match_parent"
@@ -442,6 +245,7 @@
                             android:gravity="center"
                             android:textColor="#FFF"
                             android:textSize="10sp"
+                            android:visibility="invisible"
                             />
                         
                         <TextView
@@ -452,6 +256,7 @@
                             android:gravity="center"
                             android:textColor="#FFF"
                             android:textSize="10sp"
+                            android:visibility="invisible"
                             />
                         
                         <TextView
@@ -462,6 +267,7 @@
                             android:gravity="center"
                             android:textColor="#FFF"
                             android:textSize="10sp"
+                            android:visibility="invisible"
                             />
                         
                         <TextView
@@ -472,6 +278,7 @@
                             android:gravity="center"
                             android:textColor="#FFF"
                             android:textSize="10sp"
+                            android:visibility="invisible"
                             />
                         
                         <TextView
@@ -482,6 +289,7 @@
                             android:gravity="center"
                             android:textColor="#FFF"
                             android:textSize="10sp"
+                            android:visibility="invisible"
                             />
                         
                         <TextView
@@ -492,6 +300,7 @@
                             android:gravity="center"
                             android:textColor="#FFF"
                             android:textSize="10sp"
+                            android:visibility="invisible"
                             />
                         
                         <TextView
@@ -502,6 +311,7 @@
                             android:gravity="center"
                             android:textColor="#FFF"
                             android:textSize="10sp"
+                            android:visibility="invisible"
                             />
 
                     </TableRow>

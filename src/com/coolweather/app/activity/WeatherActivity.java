@@ -3,6 +3,15 @@ package com.coolweather.app.activity;
 import java.util.ArrayList;
 import java.util.List;
 
+import lecho.lib.hellocharts.model.Axis;
+import lecho.lib.hellocharts.model.AxisValue;
+import lecho.lib.hellocharts.model.Line;
+import lecho.lib.hellocharts.model.LineChartData;
+import lecho.lib.hellocharts.model.PointValue;
+import lecho.lib.hellocharts.model.ValueShape;
+import lecho.lib.hellocharts.util.ChartUtils;
+import lecho.lib.hellocharts.view.LineChartView;
+
 import net.simonvt.menudrawer.MenuDrawer;
 
 import com.coolweather.app.R;
@@ -178,6 +187,31 @@ public class WeatherActivity extends Activity implements
 	
 	private LinearLayout menuLeftLayout;
 	
+	// temperature graph
+	LineChartView lineChartView;
+	private LineChartData data;
+    private int numberOfLines = 2;
+    private int maxNumberOfLines = 2;
+    private int numberOfPoints = 7;
+
+    int[][] randomNumbersTab = new int[maxNumberOfLines][numberOfPoints];
+
+    private boolean hasAxes = true;
+    private boolean hasAxesNames = true;
+    private boolean hasLines = true;
+    private boolean hasPoints = true;
+    private ValueShape shape = ValueShape.CIRCLE;
+    private boolean isFilled = false;
+    private boolean hasLabels = true;
+    private boolean isCubic = false;
+    private boolean hasLabelForSelected = false;
+    private boolean pointsHaveDifferentColor;
+    
+    private String day_4_dateString;
+    private String day_5_dateString;
+    private String day_6_dateString;
+    private String day_7_dateString;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -212,21 +246,21 @@ public class WeatherActivity extends Activity implements
 		alphaAnimation.setFillAfter(true);
 		imageView.startAnimation(alphaAnimation);
 		
-		day_1_maxTextView = (TextView)findViewById(R.id.day_1_max);
-		day_2_maxTextView = (TextView)findViewById(R.id.day_2_max);
-		day_3_maxTextView = (TextView)findViewById(R.id.day_3_max);
-		day_4_maxTextView = (TextView)findViewById(R.id.day_4_max);
-		day_5_maxTextView = (TextView)findViewById(R.id.day_5_max);
-		day_6_maxTextView = (TextView)findViewById(R.id.day_6_max);
-		day_7_maxTextView = (TextView)findViewById(R.id.day_7_max);
-		
-		day_1_minTextView = (TextView)findViewById(R.id.day_1_min);
-		day_2_minTextView = (TextView)findViewById(R.id.day_2_min);
-		day_3_minTextView = (TextView)findViewById(R.id.day_3_min);
-		day_4_minTextView = (TextView)findViewById(R.id.day_4_min);
-		day_5_minTextView = (TextView)findViewById(R.id.day_5_min);
-		day_6_minTextView = (TextView)findViewById(R.id.day_6_min);
-		day_7_minTextView = (TextView)findViewById(R.id.day_7_min);
+//		day_1_maxTextView = (TextView)findViewById(R.id.day_1_max);
+//		day_2_maxTextView = (TextView)findViewById(R.id.day_2_max);
+//		day_3_maxTextView = (TextView)findViewById(R.id.day_3_max);
+//		day_4_maxTextView = (TextView)findViewById(R.id.day_4_max);
+//		day_5_maxTextView = (TextView)findViewById(R.id.day_5_max);
+//		day_6_maxTextView = (TextView)findViewById(R.id.day_6_max);
+//		day_7_maxTextView = (TextView)findViewById(R.id.day_7_max);
+//		
+//		day_1_minTextView = (TextView)findViewById(R.id.day_1_min);
+//		day_2_minTextView = (TextView)findViewById(R.id.day_2_min);
+//		day_3_minTextView = (TextView)findViewById(R.id.day_3_min);
+//		day_4_minTextView = (TextView)findViewById(R.id.day_4_min);
+//		day_5_minTextView = (TextView)findViewById(R.id.day_5_min);
+//		day_6_minTextView = (TextView)findViewById(R.id.day_6_min);
+//		day_7_minTextView = (TextView)findViewById(R.id.day_7_min);
 		
 		imageView_1 = (ImageView)findViewById(R.id.day_1_weather_image);
 		imageView_2 = (ImageView)findViewById(R.id.day_2_weather_image);
@@ -310,7 +344,113 @@ public class WeatherActivity extends Activity implements
 		blueStyleButton.setOnClickListener(this);
 		greenStyleButton = (Button)findViewById(R.id.green_style);
 		greenStyleButton.setOnClickListener(this);
+		
+		lineChartView = (LineChartView)findViewById(R.id.temperature_chart);
+        
+        initTemperatureGraph();
 
+	}
+	
+	private void initTemperatureGraph() {
+
+		initTemperatureGraphData();
+		
+        List<Line> lines = new ArrayList<Line>();
+        for (int i = 0; i < numberOfLines; ++i) {
+
+            List<PointValue> values = new ArrayList<PointValue>();
+            for (int j = 0; j < numberOfPoints; ++j) {
+                values.add(new PointValue(j, randomNumbersTab[i][j]).setLabel(
+                		String.valueOf(randomNumbersTab[i][j]) + "°C"));
+            }
+
+            Line line = new Line(values);
+            line.setColor(ChartUtils.COLORS[i]);
+            line.setShape(shape);
+            line.setCubic(isCubic);
+            line.setFilled(isFilled);
+            line.setHasLabels(hasLabels);
+            line.setHasLabelsOnlyForSelected(hasLabelForSelected);
+            line.setHasLines(hasLines);
+            line.setHasPoints(hasPoints);
+            
+            
+            if (pointsHaveDifferentColor){
+                line.setPointColor(ChartUtils.COLORS[(i + 1) % ChartUtils.COLORS.length]);
+            }
+            lines.add(line);
+        }
+        
+        data = new LineChartData(lines);
+
+        if (hasAxes) {
+
+            List axisLabelXList = new ArrayList<AxisValue>();
+            AxisValue axisValue1 = new AxisValue(0).setLabel("今天");
+            AxisValue axisValue2 = new AxisValue(1).setLabel("明天");
+            AxisValue axisValue3 = new AxisValue(2).setLabel("后天");
+            AxisValue axisValue4 = new AxisValue(3).setLabel(day_4_dateString);
+            AxisValue axisValue5 = new AxisValue(4).setLabel(day_5_dateString);
+            AxisValue axisValue6 = new AxisValue(5).setLabel(day_6_dateString);
+            AxisValue axisValue7 = new AxisValue(6).setLabel(day_7_dateString);
+            axisLabelXList.add(axisValue1);
+            axisLabelXList.add(axisValue2);
+            axisLabelXList.add(axisValue3);
+            axisLabelXList.add(axisValue4);
+            axisLabelXList.add(axisValue5);
+            axisLabelXList.add(axisValue6);
+            axisLabelXList.add(axisValue7);
+            
+            Axis axisX = new Axis(axisLabelXList).setHasLines(true);
+            axisX.setLineColor(Color.parseColor("#FFFFFF"));
+            axisX.setTextColor(Color.parseColor("#FFFFFF"));
+
+            Axis axisY = new Axis();
+            
+            if (hasAxesNames) {
+                axisX.setName("");
+                axisY.setName("Temperature");
+            }
+            data.setAxisXBottom(axisX);
+            data.setAxisYLeft(null);
+        } else {
+            data.setAxisXBottom(null);
+            data.setAxisYLeft(null);
+        }
+
+        data.setBaseValue(Float.NEGATIVE_INFINITY);
+        lineChartView.setLineChartData(data);
+	}
+	
+	private void initTemperatureGraphData() {
+		randomNumbersTab[0][0] = Integer.parseInt(
+				preferences.getString("daily_forecast_tmp_max_0", "0"));
+        randomNumbersTab[0][1] = Integer.parseInt(
+				preferences.getString("daily_forecast_tmp_max_1", "0"));
+        randomNumbersTab[0][2] = Integer.parseInt(
+				preferences.getString("daily_forecast_tmp_max_2", "0"));
+        randomNumbersTab[0][3] = Integer.parseInt(
+				preferences.getString("daily_forecast_tmp_max_3", "0"));
+        randomNumbersTab[0][4] = Integer.parseInt(
+				preferences.getString("daily_forecast_tmp_max_4", "0"));
+        randomNumbersTab[0][5] = Integer.parseInt(
+				preferences.getString("daily_forecast_tmp_max_5", "0"));
+        randomNumbersTab[0][6] = Integer.parseInt(
+				preferences.getString("daily_forecast_tmp_max_6", "0"));
+        randomNumbersTab[1][0] = Integer.parseInt(
+				preferences.getString("daily_forecast_tmp_min_0", "0"));
+        randomNumbersTab[1][1] = Integer.parseInt(
+				preferences.getString("daily_forecast_tmp_min_1", "0"));
+        randomNumbersTab[1][2] = Integer.parseInt(
+				preferences.getString("daily_forecast_tmp_min_2", "0"));
+        randomNumbersTab[1][3] = Integer.parseInt(
+				preferences.getString("daily_forecast_tmp_min_3", "0"));
+        randomNumbersTab[1][4] = Integer.parseInt(
+				preferences.getString("daily_forecast_tmp_min_4", "0"));
+        randomNumbersTab[1][5] = Integer.parseInt(
+				preferences.getString("daily_forecast_tmp_min_5", "0"));
+        randomNumbersTab[1][6] = Integer.parseInt(
+				preferences.getString("daily_forecast_tmp_min_6", "0"));
 	}
 	
 	private void initMenuDrawer() {
@@ -447,23 +587,23 @@ public class WeatherActivity extends Activity implements
 		weatherInfoLayout.setVisibility(View.VISIBLE);
 		cityNameTextView.setVisibility(View.VISIBLE);
 		
-		// 7 days max temp
-		day_1_maxTextView.setText(preferences.getString("daily_forecast_tmp_max_0", "") + "°C");
-		day_2_maxTextView.setText(preferences.getString("daily_forecast_tmp_max_1", "") + "°C");
-		day_3_maxTextView.setText(preferences.getString("daily_forecast_tmp_max_2", "") + "°C");
-		day_4_maxTextView.setText(preferences.getString("daily_forecast_tmp_max_3", "") + "°C");
-		day_5_maxTextView.setText(preferences.getString("daily_forecast_tmp_max_4", "") + "°C");
-		day_6_maxTextView.setText(preferences.getString("daily_forecast_tmp_max_5", "") + "°C");
-		day_7_maxTextView.setText(preferences.getString("daily_forecast_tmp_max_6", "") + "°C");
-		
-		// 7 days min temp
-		day_1_minTextView.setText(preferences.getString("daily_forecast_tmp_min_0", "") + "°C");
-		day_2_minTextView.setText(preferences.getString("daily_forecast_tmp_min_1", "") + "°C");
-		day_3_minTextView.setText(preferences.getString("daily_forecast_tmp_min_2", "") + "°C");
-		day_4_minTextView.setText(preferences.getString("daily_forecast_tmp_min_3", "") + "°C");
-		day_5_minTextView.setText(preferences.getString("daily_forecast_tmp_min_4", "") + "°C");
-		day_6_minTextView.setText(preferences.getString("daily_forecast_tmp_min_5", "") + "°C");
-		day_7_minTextView.setText(preferences.getString("daily_forecast_tmp_min_6", "") + "°C");
+//		// 7 days max temp
+//		day_1_maxTextView.setText(preferences.getString("daily_forecast_tmp_max_0", "") + "°C");
+//		day_2_maxTextView.setText(preferences.getString("daily_forecast_tmp_max_1", "") + "°C");
+//		day_3_maxTextView.setText(preferences.getString("daily_forecast_tmp_max_2", "") + "°C");
+//		day_4_maxTextView.setText(preferences.getString("daily_forecast_tmp_max_3", "") + "°C");
+//		day_5_maxTextView.setText(preferences.getString("daily_forecast_tmp_max_4", "") + "°C");
+//		day_6_maxTextView.setText(preferences.getString("daily_forecast_tmp_max_5", "") + "°C");
+//		day_7_maxTextView.setText(preferences.getString("daily_forecast_tmp_max_6", "") + "°C");
+//		
+//		// 7 days min temp
+//		day_1_minTextView.setText(preferences.getString("daily_forecast_tmp_min_0", "") + "°C");
+//		day_2_minTextView.setText(preferences.getString("daily_forecast_tmp_min_1", "") + "°C");
+//		day_3_minTextView.setText(preferences.getString("daily_forecast_tmp_min_2", "") + "°C");
+//		day_4_minTextView.setText(preferences.getString("daily_forecast_tmp_min_3", "") + "°C");
+//		day_5_minTextView.setText(preferences.getString("daily_forecast_tmp_min_4", "") + "°C");
+//		day_6_minTextView.setText(preferences.getString("daily_forecast_tmp_min_5", "") + "°C");
+//		day_7_minTextView.setText(preferences.getString("daily_forecast_tmp_min_6", "") + "°C");
 		
 		setPicture(imageView, preferences.getString("now_cond_code", ""));
 		
@@ -477,22 +617,22 @@ public class WeatherActivity extends Activity implements
 		setPicture(imageView_7, preferences.getString("daily_forecast_cond_code_d_6", ""));
 		
 		// 4 days date
-		String day_4_dateString = preferences.getString("daily_forecast_date_3", "");
+		day_4_dateString = preferences.getString("daily_forecast_date_3", "");
 		if (!"".equals(day_4_dateString)) {
 			day_4_dateString = day_4_dateString.substring(5, 10);
 		}
 		day_4_dateTextView.setText(day_4_dateString);
-		String day_5_dateString = preferences.getString("daily_forecast_date_4", "");
+		day_5_dateString = preferences.getString("daily_forecast_date_4", "");
 		if (!"".equals(day_5_dateString)) {
 			day_5_dateString = day_5_dateString.substring(5, 10);
 		}
 		day_5_dateTextView.setText(day_5_dateString);
-		String day_6_dateString = preferences.getString("daily_forecast_date_5", "");
+		day_6_dateString = preferences.getString("daily_forecast_date_5", "");
 		if (!"".equals(day_6_dateString)) {
 			day_6_dateString = day_6_dateString.substring(5, 10);
 		}
 		day_6_dateTextView.setText(day_6_dateString);
-		String day_7_dateString = preferences.getString("daily_forecast_date_6", "");
+		day_7_dateString = preferences.getString("daily_forecast_date_6", "");
 		if (!"".equals(day_7_dateString)) {
 			day_7_dateString = day_7_dateString.substring(5, 10);
 		}
